@@ -1,1 +1,94 @@
 /* You can add global styles to this file, and also import other style files */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.titulo {
+  display: flex;
+  justify-content: center;
+  font-size: 5rem;
+  color: rgb(255, 254, 254);
+  text-shadow: 0 0 10px rgba(0, 0, 0, 5);
+  letter-spacing: 1px;
+}
+
+.inicio {
+  background-image: url("./assets/img/img-1.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: rgb(255, 254, 254);
+  font-size: 100px;
+  text-shadow: 0 0 10px rgba(0, 0, 0, 5);
+  letter-spacing: 1px;
+  text-align: center;
+  height: 586px;
+}
+.fondoUsuario {
+  background-color: rgb(231, 166, 24);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 500px;
+  padding: 20px;
+  color: rgb(0, 0, 0);
+  font-size: 20px;
+  height: 586px;
+}
+.titUsuarios {
+  color: rgb(0, 0, 0);
+}
+.fondoIngresar {
+  background-image: url("./assets/img/img-3.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 586px;
+  padding: 20px;
+  color: aliceblue;
+}
+.fondoVentas {
+  background-image: url("./assets/img/img-8.jpg");
+  height: 586px;
+}
+.fondoProveedor {
+  background-image: url("./assets/img/img-3.jpg");
+  height: 586px;
+}
+/*css para Ventas*/
+.agregarusuario {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.tituloventas {
+  text-align: center;
+  color: brown;
+}
+/*css para Clientes*/
+.tituloclientes {
+  text-align: center;
+  color: rgb(46, 13, 167);
+}
+.tituloproveedores {
+  text-align: center;
+  color: rgb(9, 87, 22);
+}
+.titulousuarios {
+  text-align: center;
+  color: rgb(97, 12, 83);
+}
+.tituloempleados {
+  text-align: center;
+  color: rgb(238, 127, 0);
+}
+.titulomateriales {
+  text-align: center;
+  color: rgb(1, 60, 94);
+}
+.titulopedidos {
+  text-align: center;
+  color: rgb(168, 19, 19);
+}

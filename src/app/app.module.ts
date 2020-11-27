@@ -12,6 +12,7 @@ import { MaterialesComponent } from './pages/materiales/materiales.component';
 import { ProveedoresComponent } from './pages/proveedores/proveedores.component';
 import { PedidosComponent } from './pages/pedidos/pedidos.component';
 import { EmpleadosComponent } from './pages/empleados/empleados.component';
+import { HomeComponent } from './pages/home/home.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { EmpleadosComponent } from './pages/empleados/empleados.component';
     ProveedoresComponent,
     PedidosComponent,
     EmpleadosComponent,
+    HomeComponent,
   ],
   imports: [BrowserModule, AppRoutingModule],
   providers: [],
