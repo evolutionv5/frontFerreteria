@@ -1,8 +1,3 @@
-h1 {
-  text-align: center;
-  color: #1d2994;
-  padding-top: 30px;
-}
 form {
   padding: 30px;
   display: grid;
@@ -24,8 +19,4 @@ form {
   td:nth-last-child(1) {
     border-right: none;
   }
-}
-
-.main {
-  height: 80vh;
 }
