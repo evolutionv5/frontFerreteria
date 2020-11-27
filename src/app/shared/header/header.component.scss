@@ -33,7 +33,9 @@
   align-items: center;
   height: 80px;
 }
-
+.nav-item.active {
+  background-color: #0055ff;
+}
 .nav-links {
   color: white;
   text-decoration: none;
