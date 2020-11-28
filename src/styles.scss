@@ -11,6 +11,7 @@ h1 {
 }
 .main {
   height: 80vh;
+  background-color: #e8e8e8;
 }
 
 .titulo {
@@ -27,9 +28,9 @@ h1 {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
-  color: rgb(255, 254, 254);
+  // color: rgb(255, 254, 254);
   font-size: 100px;
-  text-shadow: 0 0 10px rgba(0, 0, 0, 5);
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
   letter-spacing: 1px;
   text-align: center;
   height: 586px;
