@@ -11,8 +11,8 @@ export class EmpleadosComponent implements OnInit {
 
   ngOnInit(): void {}
 
-  anadirEmpleado() {
-    var emp = {
+  anadirEmpleado(): void {
+    const EMP = {
       ci: '77346',
       name: 'roger',
       apPaterno: 'chura',
@@ -21,7 +21,7 @@ export class EmpleadosComponent implements OnInit {
       telefono: '1254',
       correo: 'ro@gmail.com',
     };
-    this.serviceempleado.addEmpleado(emp).subscribe(
+    this.serviceempleado.addEmployee(EMP).subscribe(
       (response) => {
         console.log(response);
       },

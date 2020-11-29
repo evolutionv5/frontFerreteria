@@ -4,10 +4,40 @@
       <h3 class="display-3 font-weight-bold pt-md-5">
         <br />F E R R E T E R I A <br />K I N G
       </h3>
-      <hr class="hr-black" />
     </div>
-    <div class="col-md-12 mb-4 white-text text-center">
-      <button class="btn btn-primary">Agregar Usuario</button>
+    <div class="text-center formulario">
+      <form
+        autocomplete="off"
+        #userlogin="ngForm"
+        (ngSubmit)="enviar(userlogin.value)"
+      >
+        <div class="form-group">
+          <label for="user">User</label>
+          <input
+            type="text"
+            name="user"
+            class="form-control"
+            id="user"
+            placeholder="Enter user"
+            ngModel
+          />
+          <small id="emailHelp" class="form-text text-muted"
+            >We'll never share your name with anyone else.</small
+          >
+        </div>
+        <div class="form-group">
+          <label for="pass">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            name="pass"
+            id="pass"
+            placeholder="Password"
+            ngModel
+          />
+        </div>
+        <button type="submit" class="btn btn-dark">Ingresar</button>
+      </form>
     </div>
   </div>
 </div>

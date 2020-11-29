@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, OnChanges } from '@angular/core';
 import {
   faUser,
   faHome,
@@ -14,7 +14,9 @@ import {
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit, OnChanges {
+  @Input() logueo: string;
+  // Iconos
   public inicioIcon = faHome;
   public clientesIcon = faUser;
   public ventasIcon = faStore;
@@ -24,7 +26,10 @@ export class HeaderComponent implements OnInit {
   public empleadosIcon = faUserFriends;
   public ingresarIcon = faDoorOpen;
 
+  // Logueo
   constructor() {}
-
+  ngOnChanges() {
+    console.log(this.logueo);
+  }
   ngOnInit(): void {}
 }

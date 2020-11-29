@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg">
   <a href="/" class="navbar-logo"> </a>
-  <ul class="navbar-nav">
+  <ul class="navbar-nav" *ngIf="logueo != 'none'">
     <li class="nav-item" routerLink="home" routerLinkActive="active">
       <a class="nav-links">
         <fa-icon [icon]="inicioIcon"></fa-icon>
@@ -19,25 +19,45 @@
         Ventas
       </a>
     </li>
-    <li class="nav-item" routerLink="material" routerLinkActive="active">
+    <li
+      class="nav-item"
+      routerLink="material"
+      routerLinkActive="active"
+      *ngIf="logueo == 'admin'"
+    >
       <a class="nav-links">
         <fa-icon [icon]="materialesIcon"></fa-icon>
         Materiales
       </a>
     </li>
-    <li class="nav-item" routerLink="proveedor" routerLinkActive="active">
+    <li
+      class="nav-item"
+      routerLink="proveedor"
+      routerLinkActive="active"
+      *ngIf="logueo == 'admin'"
+    >
       <a class="nav-links">
         <fa-icon [icon]="proveedoresIcon"></fa-icon>
         Proveedores
       </a>
     </li>
-    <li class="nav-item" routerLink="pedido" routerLinkActive="active">
+    <li
+      class="nav-item"
+      routerLink="pedido"
+      routerLinkActive="active"
+      *ngIf="logueo == 'admin'"
+    >
       <a class="nav-links">
         <fa-icon [icon]="pedidosIcon"></fa-icon>
         Pedidos
       </a>
     </li>
-    <li class="nav-item" routerLink="empleado" routerLinkActive="active">
+    <li
+      class="nav-item"
+      routerLink="empleado"
+      routerLinkActive="active"
+      *ngIf="logueo == 'admin'"
+    >
       <a class="nav-links">
         <fa-icon [icon]="empleadosIcon"></fa-icon>
         Empleados

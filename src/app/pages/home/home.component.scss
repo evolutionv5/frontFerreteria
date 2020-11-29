@@ -6,3 +6,19 @@ button {
   color: #e8e8e8;
   border: none;
 }
+.container {
+  .formulario {
+    display: grid;
+    justify-content: center;
+    align-content: center;
+  }
+}
+form {
+  font-size: 5px;
+  width: 300px;
+  label {
+    font-size: 20px;
+    color: #03506f;
+    font-weight: bold;
+  }
+}
