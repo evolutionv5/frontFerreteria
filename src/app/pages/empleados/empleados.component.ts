@@ -21,7 +21,7 @@ export class EmpleadosComponent implements OnInit {
       telefono: '1254',
       correo: 'ro@gmail.com',
     };
-    this.serviceempleado.addEmpleado(emp).subscribe(
+    this.serviceempleado.addEmployee(emp).subscribe(
       (response) => {
         console.log(response);
       },
