@@ -6,9 +6,8 @@
   align-items: center;
 }
 .navbar-nav {
-  display: grid;
-  grid-template-columns: repeat(8, 1fr);
-  // justify-items: center;
+  display: flex;
+  flex-direction: row;
 }
 .navbar-logo {
   color: rgb(231, 166, 24);

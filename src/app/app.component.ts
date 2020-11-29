@@ -11,17 +11,13 @@ export class AppComponent {
   public headerLogin = 'none';
   constructor() {}
   recibirLogueo(data: Login): void {
-    this.headerLogin = data.user;
-    console.log('APP COMPONENT', this.headerLogin);
-    console.log(data);
     if (
       (data.user === 'admin' && data.password === 'admin') ||
       (data.user === 'user' && data.password === 'user')
     ) {
+      this.headerLogin = data.user;
       this.pantallaLogin = false;
-      console.log('holaa???');
     }
-    console.log('APP COMPONENT', this.pantallaLogin);
   }
   logout(res) {
     if (res === 'salir') {

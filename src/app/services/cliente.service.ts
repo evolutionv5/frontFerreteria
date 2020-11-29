@@ -4,17 +4,15 @@ import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { GLOBAL } from './global';
 
-
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ClienteService {
-
   public url: string;
 
   constructor(private http: HttpClient) {
-    this.url =GLOBAL.url;
-   }
+    this.url = GLOBAL.url;
+  }
 
   // Http Headers
   httpOptions = {
@@ -23,35 +21,33 @@ export class ClienteService {
     }),
   };
 
-  addClient(client): Observable<any>{
+  addClient(client): Observable<any> {
     return this.http
       .post<any>(this.url + 'addCliente', client, this.httpOptions)
       .pipe(retry(1), catchError(this.errorHandl));
   }
 
-  getClientId(idclient): Observable<any>{
+  getClientId(idclient): Observable<any> {
     return this.http
       .post<any>(this.url + 'findByIdCliente', idclient, this.httpOptions)
       .pipe(retry(1), catchError(this.errorHandl));
   }
 
-  getClients(){
+  getClients() {
     return this.http
       .get<any>(this.url + 'findAllCliente')
       .pipe(retry(1), catchError(this.errorHandl));
   }
 
-  updateClient(client){
-    return this.http.put<any>(this.url + 'updateCLiente', client, this.httpOptions).pipe(
-      retry(1),
-      catchError(this.errorHandl)
-    );
+  updateClient(client) {
+    return this.http
+      .put<any>(this.url + 'updateCLiente', client, this.httpOptions)
+      .pipe(retry(1), catchError(this.errorHandl));
   }
 
-  deleteClient(idclient){
-    return this.http.delete<any>(this.url + 'deleteCliente'+ {id: idclient});
+  deleteClient(idclient) {
+    return this.http.delete<any>(this.url + 'deleteCliente' + { id: idclient });
   }
-
 
   // Error handling
   errorHandl(error): any {
@@ -65,5 +61,5 @@ export class ClienteService {
     }
     console.log(errorMessage);
     return throwError(errorMessage);
-  } 
+  }
 }
