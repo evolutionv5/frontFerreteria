@@ -2,8 +2,9 @@
   <h1>CLIENTES</h1>
   <form class="form-inline">
     <div class="form-group mb-2">
-  <button type="button" class="btn btn-primary" (click) = "show()">
-      Agregar nuevo cliente</button>
+      <button type="button" class="btn btn-info" (click)="show()">
+        Agregar nuevo cliente
+      </button>
     </div>
     <div class="form-group mx-sm-3 mb-2">
       <label for="inputPassword2" class="sr-only">C.I. de Cliente</label>
@@ -14,7 +15,7 @@
         placeholder="Password"
       />
     </div>
-    <button type="submit" class="btn btn-primary mb-2">Buscar</button>
+    <button type="submit" class="btn btn-info mb-2">Buscar</button>
   </form>
 
   <div class="tabla">
@@ -59,41 +60,72 @@
   </div>
 </section>
 
-
-
-   
-<div class="container">
+<!-- <div class="container">
   <h1 class="text-center">Login with bootstrap popup</h1>
-  <button type="button" class="btn btn-primary" (click) = "show()">Login</button>
-   </div>
+  <button type="button" class="btn btn-info" (click)="show()">Login</button>
+</div> -->
 <!-- Creates the bootstrap modal where the image will appear -->
-<div [style.display]="showModal ? 'block' : 'none'" class="modal" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-<div class="modal-dialog">
-  <div class="modal-content">
-    <div class="modal-header">
-      <h4 class="modal-title" id="myModalLabel">Login</h4>
-    </div>
-    <div class="modal-body">
+<div
+  [style.display]="showModal ? 'block' : 'none'"
+  class="modal"
+  id="imagemodal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="myModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">Login</h4>
+      </div>
+      <div class="modal-body">
         <!-- <form [formGroup]="registerForm" (ngSubmit)="onSubmit()"> -->
-          <div class="form-group">
-            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="CI">
-          </div>
-          <div class="form-group">
-            <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Nombre">
-          </div>
-          <div class="form-group">
-            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Apellido Paterno">
-          </div>
-          <div class="form-group">
-            <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Apellido Materno">
-          </div>
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control"
+            id="formGroupExampleInput"
+            placeholder="CI"
+          />
+        </div>
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control"
+            id="formGroupExampleInput2"
+            placeholder="Nombre"
+          />
+        </div>
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control"
+            id="formGroupExampleInput3"
+            placeholder="Apellido Paterno"
+          />
+        </div>
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control"
+            id="formGroupExampleInput4"
+            placeholder="Apellido Materno"
+          />
+        </div>
         <!-- </form> -->
-    </div>
-    <div class="modal-footer">
+      </div>
+      <div class="modal-footer">
         <button class="btn btn-success">Guardar</button>
-        <button type="button" class="btn btn-dark" data-dismiss="modal" (click) = "hide()">Close</button>
-    
+        <button
+          type="button"
+          class="btn btn-dark"
+          data-dismiss="modal"
+          (click)="hide()"
+        >
+          Close
+        </button>
+      </div>
     </div>
   </div>
-</div>
 </div>
