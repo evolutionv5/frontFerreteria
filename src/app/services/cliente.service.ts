@@ -1,19 +1,20 @@
-import { Injectable } from '@angular/core';
-
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
-import { retry, catchError } from 'rxjs/operators';
+import { catchError, retry } from 'rxjs/operators';
 import { GLOBAL } from './global';
 
+
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
-export class EmpleadoService {
+export class ClienteService {
+
   public url: string;
 
   constructor(private http: HttpClient) {
-    this.url = GLOBAL.url;
-  }
+    this.url =GLOBAL.url;
+   }
 
   // Http Headers
   httpOptions = {
@@ -22,34 +23,35 @@ export class EmpleadoService {
     }),
   };
 
-  addEmployee(employee): Observable<any>{
+  addClient(client): Observable<any>{
     return this.http
-      .post<any>(this.url + 'addEmpleado', employee, this.httpOptions)
+      .post<any>(this.url + 'addCliente', client, this.httpOptions)
       .pipe(retry(1), catchError(this.errorHandl));
   }
 
-  getEmployeeId(idemployee): Observable<any>{
+  getClientId(idclient): Observable<any>{
     return this.http
-      .post<any>(this.url + 'findByIdEmpleado', idemployee, this.httpOptions)
+      .post<any>(this.url + 'findByIdCliente', idclient, this.httpOptions)
       .pipe(retry(1), catchError(this.errorHandl));
   }
 
-  getEmployees(){
+  getClients(){
     return this.http
-      .get<any>(this.url + 'findAllEmpleado')
+      .get<any>(this.url + 'findAllCliente')
       .pipe(retry(1), catchError(this.errorHandl));
   }
 
-  updateEmployee(employee){
-    return this.http.put<any>(this.url + 'updateEmpleado', employee, this.httpOptions).pipe(
+  updateClient(client){
+    return this.http.put<any>(this.url + 'updateCLiente', client, this.httpOptions).pipe(
       retry(1),
       catchError(this.errorHandl)
     );
   }
 
-  deleteEmployee(idemployee){
-    return this.http.delete<any>(this.url + 'deleteEmpleado'+ {id: idemployee});
+  deleteClient(idclient){
+    return this.http.delete<any>(this.url + 'deleteCliente'+ {id: idclient});
   }
+
 
   // Error handling
   errorHandl(error): any {
@@ -63,5 +65,5 @@ export class EmpleadoService {
     }
     console.log(errorMessage);
     return throwError(errorMessage);
-  }
+  } 
 }

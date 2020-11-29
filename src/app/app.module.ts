@@ -18,6 +18,10 @@ import { PedidosComponent } from './pages/pedidos/pedidos.component';
 import { EmpleadosComponent } from './pages/empleados/empleados.component';
 import { HomeComponent } from './pages/home/home.component';
 
+//Forms
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,6 +40,8 @@ import { HomeComponent } from './pages/home/home.component';
     AppRoutingModule,
     HttpClientModule,
     FontAwesomeModule,
+    FormsModule,
+    ReactiveFormsModule 
   ],
   providers: [],
   bootstrap: [AppComponent],

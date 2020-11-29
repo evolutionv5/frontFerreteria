@@ -6,9 +6,10 @@ import { retry, catchError } from 'rxjs/operators';
 import { GLOBAL } from './global';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
-export class EmpleadoService {
+export class PedidoService {
+
   public url: string;
 
   constructor(private http: HttpClient) {
@@ -22,34 +23,33 @@ export class EmpleadoService {
     }),
   };
 
-  addEmployee(employee): Observable<any>{
+  addOrder(order): Observable<any>{
     return this.http
-      .post<any>(this.url + 'addEmpleado', employee, this.httpOptions)
+      .post<any>(this.url + 'addPedido', order, this.httpOptions)
       .pipe(retry(1), catchError(this.errorHandl));
   }
 
-  getEmployeeId(idemployee): Observable<any>{
+  getOrderId(idorder): Observable<any>{
     return this.http
-      .post<any>(this.url + 'findByIdEmpleado', idemployee, this.httpOptions)
+      .post<any>(this.url + 'findByIdPedido', idorder, this.httpOptions)
       .pipe(retry(1), catchError(this.errorHandl));
   }
 
-  getEmployees(){
+  getOrder(){
     return this.http
-      .get<any>(this.url + 'findAllEmpleado')
+      .get<any>(this.url + 'findAllPedido')
       .pipe(retry(1), catchError(this.errorHandl));
   }
 
-  updateEmployee(employee){
-    return this.http.put<any>(this.url + 'updateEmpleado', employee, this.httpOptions).pipe(
+  updateOrder(order){
+    return this.http.put<any>(this.url + 'updatePedido', order, this.httpOptions).pipe(
       retry(1),
       catchError(this.errorHandl)
     );
   }
+  
 
-  deleteEmployee(idemployee){
-    return this.http.delete<any>(this.url + 'deleteEmpleado'+ {id: idemployee});
-  }
+
 
   // Error handling
   errorHandl(error): any {
@@ -63,5 +63,5 @@ export class EmpleadoService {
     }
     console.log(errorMessage);
     return throwError(errorMessage);
-  }
+  } 
 }

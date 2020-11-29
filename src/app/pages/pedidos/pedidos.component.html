@@ -3,7 +3,7 @@
   <form>
     <div class="form-row">
       <div class="col-7">
-        <button class="btn btn-success">Agregar nuevo pedido</button>
+        <button type="button" class="btn btn-primary" (click) = "show()">Agregar nuevo pedido</button>
       </div>
       <div class="col-4">
         <input
@@ -36,4 +36,44 @@
       </tr>
     </table>
   </div>
+</div>
+
+
+<div class="container">
+  <h1 class="text-center">Login with bootstrap popup</h1>
+  <button type="button" class="btn btn-primary" (click) = "show()">Login</button>
+   </div>
+<!-- Creates the bootstrap modal where the image will appear -->
+<div [style.display]="showModal ? 'block' : 'none'" class="modal" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h4 class="modal-title" id="myModalLabel">Login</h4>
+    </div>
+    <div class="modal-body">
+      
+          <div class="form-group">
+            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="MATERIAL">
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="MARCA">
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="TIPO">
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="PRECIO">
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="CANTIDAD">
+          </div>
+        
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-success">Guardar</button>
+        <button type="button" class="btn btn-dark" data-dismiss="modal" (click) = "hide()">Close</button>
+    
+    </div>
+  </div>
+</div>
 </div>
