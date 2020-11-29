@@ -1,4 +1,4 @@
-<app-header logueo="{{ headerLogin }}"></app-header>
-<app-home (respuesta)="recibirLogueo($event)" *ngIf="login"></app-home>
-<router-outlet *ngIf="!login"></router-outlet>
+<app-header logueo="{{ headerLogin }}" (LogOut)="logout($event)"></app-header>
+<app-home *ngIf="pantallaLogin" (respuesta)="recibirLogueo($event)"></app-home>
+<router-outlet *ngIf="!pantallaLogin"></router-outlet>
 <app-footer></app-footer>

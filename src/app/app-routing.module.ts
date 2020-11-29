@@ -6,7 +6,6 @@ import { MaterialesComponent } from './pages/materiales/materiales.component';
 import { ProveedoresComponent } from './pages/proveedores/proveedores.component';
 import { PedidosComponent } from './pages/pedidos/pedidos.component';
 import { EmpleadosComponent } from './pages/empleados/empleados.component';
-import { HomeComponent } from './pages/home/home.component';
 
 const routes: Routes = [
   { path: 'cliente', component: ClientesComponent },
@@ -15,7 +14,6 @@ const routes: Routes = [
   { path: 'proveedor', component: ProveedoresComponent },
   { path: 'pedido', component: PedidosComponent },
   { path: 'empleado', component: EmpleadosComponent },
-  { path: 'home', component: HomeComponent },
   { path: '**', pathMatch: 'full', redirectTo: 'venta' },
 ];
 

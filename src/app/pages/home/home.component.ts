@@ -1,4 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Login } from '../../models/login.interface';
 
 @Component({
   selector: 'app-home',
@@ -7,24 +8,20 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
   constructor() {}
-  @Output() respuesta = new EventEmitter<boolean>();
-  public login = {
-    user: '',
-    pass: '',
-  };
+  @Output() respuesta = new EventEmitter<Login>();
+
   ngOnInit(): void {}
-  enviar(data): void {
-    this.login = data;
-    this.verificarLogueo();
+  enviar(data: Login): void {
+    // this.verificarLogueo();
+    this.respuesta.emit(data);
   }
   verificarLogueo(): void {
-    console.log(this.login);
-    if (this.login.user === 'admin' && this.login.pass === 'admin') {
-      this.respuesta.emit(true);
-    } else if (this.login.user === 'user' && this.login.pass === 'user') {
-      this.respuesta.emit(true);
-    } else {
-      this.respuesta.emit(false);
-    }
+    // if (this.login.user === 'admin' && this.login.pass === 'admin') {
+    //   this.respuesta.emit(true);
+    // } else if (this.login.user === 'user' && this.login.pass === 'user') {
+    //   this.respuesta.emit(true);
+    // } else {
+    //   this.respuesta.emit(false);
+    // }
   }
 }
