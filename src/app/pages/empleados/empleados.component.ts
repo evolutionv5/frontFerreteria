@@ -17,7 +17,10 @@ export class EmpleadosComponent implements OnInit {
   editar = false;
   identy;
 
-  constructor(private formBuilder: FormBuilder, private serviceempleado: EmpleadoService) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private serviceempleado: EmpleadoService
+  ) {
     // this.Empleados = [
     //   {
     //     id: 0,
@@ -33,19 +36,17 @@ export class EmpleadosComponent implements OnInit {
     // ];
   }
 
-  show(it, id)
-  {
-    this.showModal = true; 
-    if(it){
+  show(it, id) {
+    this.showModal = true;
+    if (it) {
       this.editar = false;
-    }else{
+    } else {
       this.identy = id;
       this.editar = true;
     }
   }
 
-  hide()
-  {
+  hide() {
     this.showModal = false;
   }
 
@@ -78,31 +79,31 @@ export class EmpleadosComponent implements OnInit {
   }
 
   addEmpleado(): void {
-    if(!this.editar){
+    if (!this.editar) {
       this.editarEmpleado();
-    }else{
-    console.log("añadiendo...");
+    } else {
+      console.log('añadiendo...');
       console.log(this.registerForm.value);
-    const emp = {
-      ci: this.registerForm.value.ci,
-      name: this.registerForm.value.name,
-      apPaterno: this.registerForm.value.apPaterno,
-      apMaterno: this.registerForm.value.apMaterno,
-      direccion: this.registerForm.value.direccion,
-      telefono: this.registerForm.value.telefono,
-      correo: this.registerForm.value.correo,
-      tipo: this.registerForm.value.tipo,
-    };
-    this.serviceempleado.addEmployee(emp).subscribe(
-      (response) => {
-        console.log(response);
-      },
-      (er) => console.log(er)
-    );
+      const emp = {
+        ci: this.registerForm.value.ci,
+        name: this.registerForm.value.name,
+        apPaterno: this.registerForm.value.apPaterno,
+        apMaterno: this.registerForm.value.apMaterno,
+        direccion: this.registerForm.value.direccion,
+        telefono: this.registerForm.value.telefono,
+        correo: this.registerForm.value.correo,
+        tipo: this.registerForm.value.tipo,
+      };
+      this.serviceempleado.addEmployee(emp).subscribe(
+        (response) => {
+          console.log(response);
+        },
+        (er) => console.log(er)
+      );
     }
   }
 
-  listarEmpleados(){
+  listarEmpleados() {
     this.serviceempleado.getEmployees().subscribe(
       (response) => {
         console.log(response);
@@ -112,20 +113,22 @@ export class EmpleadosComponent implements OnInit {
     );
   }
 
-  editarEmpleado(){
-    console.log("editando...");
+  editarEmpleado() {
+    console.log('editando...');
     console.log(this.registerForm.value);
     const response = {
       lat: -51.3303,
-      lng: 0.39440
-    }
- 
+      lng: 0.3944,
+    };
+
     let item = {
-          id: 'qwenhee-9763ae-lenfya',
-          address: '14-22 Elder St, London, E1 6BT, UK'
-    }
- 
- const newItem = Object.assign({}, this.registerForm.value, { id: this.identy });
+      id: 'qwenhee-9763ae-lenfya',
+      address: '14-22 Elder St, London, E1 6BT, UK',
+    };
+
+    const newItem = Object.assign({}, this.registerForm.value, {
+      id: this.identy,
+    });
     console.log(newItem);
     this.serviceempleado.updateEmployee(newItem).subscribe(
       (response) => {
@@ -135,7 +138,7 @@ export class EmpleadosComponent implements OnInit {
     );
   }
 
-  borrarEmpleado(id){
+  borrarEmpleado(id) {
     this.serviceempleado.deleteEmployee(id).subscribe(
       (response) => {
         console.log(response);
@@ -143,4 +146,5 @@ export class EmpleadosComponent implements OnInit {
       (er) => console.log(er)
     );
   }
+  eliminarEmpleado(data) {}
 }
