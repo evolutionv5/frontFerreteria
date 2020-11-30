@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { GLOBAL } from './global';
+import { Cliente } from '../models/interfaces';
 
 @Injectable({
   providedIn: 'root',
@@ -35,7 +36,7 @@ export class ClienteService {
 
   getClients() {
     return this.http
-      .get<any>(this.url + 'findAllCliente')
+      .get<Cliente>(this.url + 'findAllCliente')
       .pipe(retry(1), catchError(this.errorHandl));
   }
 

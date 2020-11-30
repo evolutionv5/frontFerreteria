@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Login } from './models/login.interface';
+import { Login } from './models/interfaces';
 
 @Component({
   selector: 'app-root',

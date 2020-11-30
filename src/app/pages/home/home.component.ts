@@ -1,5 +1,5 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { Login } from '../../models/login.interface';
+import { Login } from '../../models/interfaces';
 
 @Component({
   selector: 'app-home',
