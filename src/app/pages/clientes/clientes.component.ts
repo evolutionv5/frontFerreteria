@@ -20,9 +20,11 @@ export class ClientesComponent implements OnInit {
     public clienteService: ClienteService
   ) {
     this.resetData();
-    clienteService.getClients().subscribe((res: Cliente[]) => {
+    this.getClientes();
+  }
+  getClientes() {
+    this.clienteService.getClients().subscribe((res: Cliente[]) => {
       this.clientes = [...res];
-      console.log('[CLIENTE]', res);
     });
   }
   show() {
@@ -61,5 +63,7 @@ export class ClientesComponent implements OnInit {
     this.clienteService
       .addClient(this.cliente)
       .subscribe((res) => console.log(res));
+    this.showModal = false;
+    this.getClientes();
   }
 }
