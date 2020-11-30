@@ -10,7 +10,7 @@ import { Cliente } from '../../models/interfaces';
 })
 export class ClientesComponent implements OnInit {
   public clientes: Cliente[];
-
+  public cliente: Cliente;
   title = 'angulartoastr';
   showModal: boolean;
   registerForm: FormGroup;
@@ -19,6 +19,7 @@ export class ClientesComponent implements OnInit {
     private formBuilder: FormBuilder,
     public clienteService: ClienteService
   ) {
+    this.resetData();
     clienteService.getClients().subscribe((res: Cliente[]) => {
       this.clientes = [...res];
       console.log('[CLIENTE]', res);
@@ -30,6 +31,7 @@ export class ClientesComponent implements OnInit {
   // Bootstrap Modal Close event
   hide() {
     this.showModal = false;
+    this.resetData();
   }
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
@@ -50,5 +52,14 @@ export class ClientesComponent implements OnInit {
     if (this.submitted) {
       this.showModal = false;
     }
+  }
+
+  resetData() {
+    this.cliente = { ci: '', apPaterno: '', apMaterno: '', name: '' };
+  }
+  agregarCliente() {
+    this.clienteService
+      .addClient(this.cliente)
+      .subscribe((res) => console.log(res));
   }
 }
