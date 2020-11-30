@@ -16,11 +16,16 @@ export class EmpleadosComponent implements OnInit {
   Empleados;
   editar = false;
   identy;
+  public empleados: Empleado[];
 
   constructor(
     private formBuilder: FormBuilder,
-    private serviceempleado: EmpleadoService
+    private serviceempleado: EmpleadoService,
+    public empleadoService: EmpleadoService
   ) {
+    empleadoService.getEmployees().subscribe((res: Empleado[]) => {
+      this.empleados = [...res];
+    });
     // this.Empleados = [
     //   {
     //     id: 0,

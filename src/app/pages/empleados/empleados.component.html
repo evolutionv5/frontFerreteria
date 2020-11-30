@@ -34,16 +34,16 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let empleado of Empleados">
-          <th>{{ empleado.ci }}</th>
-          <th>{{ empleado.tipo }}</th>
-          <th>{{ empleado.nombre }}</th>
-          <th>{{ empleado.apPaterno }}</th>
-          <th>{{ empleado.apMaterno }}</th>
-          <th>{{ empleado.direccion }}</th>
-          <th>{{ empleado.correo }}</th>
-          <th>{{ empleado.accion }}</th>
-          <th>
+        <tr *ngFor="let empleado of empleados">
+          <td>{{ empleado.ci }}</td>
+          <td>{{ empleado.tipo }}</td>
+          <td>{{ empleado.name }}</td>
+          <td>{{ empleado.apPaterno }}</td>
+          <td>{{ empleado.apMaterno }}</td>
+          <td>{{ empleado.direccion }}</td>
+          <td>{{ empleado.telefono }}</td>
+          <td>{{ empleado.correo }}</td>
+          <td>
             <button class="btn btn-warning" (click)="show(true, empleado.id)">
               Editar
             </button>
@@ -53,7 +53,7 @@
             >
               Eliminar
             </button>
-          </th>
+          </td>
         </tr>
       </tbody>
     </table>
