@@ -1,52 +1,39 @@
-<div class="animate__animated animate__fadeIn main">
+<div class="main animate__animated animate__fadeIn">
   <h1>PEDIDOS</h1>
-  <form>
-    <div class="form-row">
-      <div class="col-7">
-        <button type="button" class="btn btn-info" (click)="show()">
-          Agregar nuevo pedido
-        </button>
-      </div>
-      <div class="col-4">
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Nombre del Material"
-        />
-      </div>
-      <div class="col-1">
-        <button class="btn btn-info">Buscar</button>
-      </div>
+  <form class="form-inline">
+    <div class="form-group">
+      <button type="button" class="btn btn-info" (click)="show()">
+        Agregar nuevo pedido
+      </button>
+    </div>
+    <div class="col-4">
+      <input type="text" class="form-control" placeholder="Nombre del Pedido" />
+    </div>
+    <div class="col-1">
+      <button class="btn btn-info">Buscar</button>
     </div>
   </form>
 
-  <div class="objetos">
-    <table class="table m-2">
-      <thead class="thead-dark">
+  <div class="tabla">
+    <table class="table">
+      <thead class="thead-dark table-head">
         <tr>
-          <th>Material</th>
           <th>Pago</th>
           <th>Fecha</th>
           <th>Comentario</th>
-          <th>CI Empleado</th>
-          <th>ID Proveedor</th>
           <th>Acción</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let pedido of Pedidos">
-          <th></th>
-          <th></th>
-          <th></th>
-          <th></th>
-          <th></th>
-          <th></th>
-          <th></th>
-          <th></th>
-          <th>
-            <button class="btn btn-warning">Editar</button>
-            <button class="btn btn-danger">Eliminar</button>
-          </th>
+        <tr *ngFor="let pedido of pedidos">
+          <td>{{ pedido.pago }}</td>
+          <td>{{ pedido.fecha }}</td>
+          <td>{{ pedido.comentario }}</td>
+          <td>
+            <button class="btn btn-danger">eliminar</button>
+            <button class="btn btn-warning">compras</button>
+            <button class="btn btn-success">editar</button>
+          </td>
         </tr>
       </tbody>
     </table>

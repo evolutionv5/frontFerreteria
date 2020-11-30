@@ -9,47 +9,51 @@ import { EmpleadoService } from '../../services/empleado.service';
   styleUrls: ['./empleados.component.scss'],
 })
 export class EmpleadosComponent implements OnInit {
-
   title = 'angulartoastr';
   showModal: boolean;
   registerForm: FormGroup;
   submitted = false;
-  Empleados ;
-
-  constructor(private formBuilder: FormBuilder, private serviceempleado: EmpleadoService) {}
-
-  show()
-  {
-    this.showModal = true; 
+  public empleados: Empleado[];
+  constructor(
+    private formBuilder: FormBuilder,
+    public empleadoService: EmpleadoService
+  ) {
+    empleadoService.getEmployees().subscribe((res: Empleado[]) => {
+      this.empleados = [...res];
+    });
   }
-  hide()
-  {
+
+  show() {
+    this.showModal = true;
+  }
+  hide() {
     this.showModal = false;
   }
 
   ngOnInit() {
-    this.registerForm =  this.formBuilder.group({
-        ci: ['', [Validators.required]],
-        name: ['', [Validators.required]],
-        apPaterno: ['', [Validators.required]],
-        apMaterno: ['', [Validators.required]],
-        direccion: ['', [Validators.required]],
-        telefono: ['', [Validators.required]],
-        correo: ['', [Validators.required]],
-        tipo: ['', [Validators.required]]
+    this.registerForm = this.formBuilder.group({
+      ci: ['', [Validators.required]],
+      name: ['', [Validators.required]],
+      apPaterno: ['', [Validators.required]],
+      apMaterno: ['', [Validators.required]],
+      direccion: ['', [Validators.required]],
+      telefono: ['', [Validators.required]],
+      correo: ['', [Validators.required]],
+      tipo: ['', [Validators.required]],
     });
 
-    this.listarEmpleados();
+    // this.listarEmpleados();
   }
 
-  get f() { return this.registerForm.controls; }
+  get f() {
+    return this.registerForm.controls;
+  }
   onSubmit() {
     this.submitted = true;
     if (this.registerForm.invalid) {
-        return;
+      return;
     }
-    if(this.submitted)
-    {
+    if (this.submitted) {
       this.showModal = false;
     }
   }
@@ -66,7 +70,7 @@ export class EmpleadosComponent implements OnInit {
       correo: this.registerForm.value.correo,
       tipo: this.registerForm.value.tipo,
     };
-    this.serviceempleado.addEmployee(emp).subscribe(
+    this.empleadoService.addEmployee(emp).subscribe(
       (response) => {
         console.log(response);
       },
@@ -74,13 +78,13 @@ export class EmpleadosComponent implements OnInit {
     );
   }
 
-  listarEmpleados(){
-    this.serviceempleado.getEmployees().subscribe(
-      (response) => {
-        console.log(response);
-        this.Empleados = response;
-      },
-      (er) => console.log(er)
-    );
-  }
+  // listarEmpleados() {
+  //   this.empleadoService.getEmployees().subscribe(
+  //     (response) => {
+  //       console.log(response);
+  //       this.empleados = response;
+  //     },
+  //     (er) => console.log(er)
+  //   );
+  // }
 }

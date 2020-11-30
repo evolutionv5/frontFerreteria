@@ -1,7 +1,22 @@
-h1{
-    text-align: center;
+form {
+  padding: 30px;
+  display: grid;
+  grid-template-columns: 4fr 1fr 1fr;
+  button {
+    width: 200px;
+  }
 }
+.tabla {
+  padding: 0 30px 0 30px;
+  text-align: center;
+  button {
+    margin: 5px;
+  }
 
-.col-5{
-    margin-left: 300px;
+  td {
+    border-right: 1px dashed rgb(223, 217, 217);
+  }
+  td:nth-last-child(1) {
+    border-right: none;
+  }
 }
