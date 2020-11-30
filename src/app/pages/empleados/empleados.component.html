@@ -2,7 +2,7 @@
   <h1 class="align-items-center">EMPLEADOS</h1>
   <div class="row form-group">
     <div class="col">
-      <button type="button" class="btn btn-info" (click)="show()">
+      <button type="button" class="btn btn-info" (click)="show(false, 0)">
         Agregar nuevo empleado
       </button>
     </div>
@@ -36,17 +36,17 @@
       </thead>
       <tbody>
         <tr *ngFor="let empleado of Empleados">
-          <th></th>
-          <th></th>
-          <th></th>
-          <th></th>
-          <th></th>
-          <th></th>
-          <th></th>
-          <th></th>
+          <th>{{ empleado.ci }}</th>
+          <th>{{ empleado.tipo }}</th>
+          <th>{{ empleado.nombre }}</th>
+          <th>{{ empleado.apPaterno }}</th>
+          <th>{{ empleado.apMaterno }}</th>
+          <th>{{ empleado.direccion }}</th>
+          <th>{{ empleado.correo }}</th>
+          <th>{{ empleado.accion }}</th>
           <th>
-            <button class="btn btn-warning">Editar</button>
-            <button class="btn btn-danger">Eliminar</button>
+            <button class="btn btn-warning" (click)="show(true, empleado.id)">Editar</button>
+            <button class="btn btn-danger" (click)="borrarEmpleado(empleado.id)">Eliminar</button>
           </th>
         </tr>
       </tbody>
@@ -185,6 +185,7 @@
       </div>
       <div class="modal-footer">
         <button class="btn btn-success" type="submit" (click)="addEmpleado()">Guardar</button>
+        <!-- <button class="btn btn-success" type="submit" (click)="editarEmpleado()">Editar</button> -->
         <button
           type="button"
           class="btn btn-dark"
@@ -197,3 +198,5 @@
     </div>
   </div>
 </div>
+
+

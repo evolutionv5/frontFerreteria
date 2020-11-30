@@ -14,14 +14,37 @@ export class EmpleadosComponent implements OnInit {
   showModal: boolean;
   registerForm: FormGroup;
   submitted = false;
-  Empleados ;
+  Empleados;
+  editar = false;
+  identy;
 
-  constructor(private formBuilder: FormBuilder, private serviceempleado: EmpleadoService) {}
+  constructor(private formBuilder: FormBuilder, private serviceempleado: EmpleadoService) {
+    this.Empleados = [
+      {
+        id: 0,
+        ci: "911",
+        name: "henry",
+        apPaterno: "miranda",
+        apMaterno: "choque",
+        direccion: "aca nomas",
+        telefono: "6324",
+        correo: "henry@usuario",
+        tipo: "admin"
+      },
+    ];
+  }
 
-  show()
+  show(it, id)
   {
     this.showModal = true; 
+    if(it){
+      this.editar = false;
+    }else{
+      this.identy = id;
+      this.editar = true;
+    }
   }
+  
   hide()
   {
     this.showModal = false;
@@ -55,7 +78,11 @@ export class EmpleadosComponent implements OnInit {
   }
 
   addEmpleado(): void {
-    console.log(this.registerForm.value);
+    if(!this.editar){
+      this.editarEmpleado();
+    }else{
+    console.log("añadiendo...");
+      console.log(this.registerForm.value);
     const emp = {
       ci: this.registerForm.value.ci,
       name: this.registerForm.value.name,
@@ -72,6 +99,7 @@ export class EmpleadosComponent implements OnInit {
       },
       (er) => console.log(er)
     );
+    }
   }
 
   listarEmpleados(){
@@ -79,6 +107,38 @@ export class EmpleadosComponent implements OnInit {
       (response) => {
         console.log(response);
         this.Empleados = response;
+      },
+      (er) => console.log(er)
+    );
+  }
+
+  editarEmpleado(){
+    console.log("editando...");
+    console.log(this.registerForm.value);
+    const response = {
+      lat: -51.3303,
+      lng: 0.39440
+    }
+ 
+    let item = {
+          id: 'qwenhee-9763ae-lenfya',
+          address: '14-22 Elder St, London, E1 6BT, UK'
+    }
+ 
+ const newItem = Object.assign({}, this.registerForm.value, { id: this.identy });
+    console.log(newItem);
+    this.serviceempleado.updateEmployee(newItem).subscribe(
+      (response) => {
+        console.log(response);
+      },
+      (er) => console.log(er)
+    );
+  }
+
+  borrarEmpleado(id){
+    this.serviceempleado.deleteEmployee(id).subscribe(
+      (response) => {
+        console.log(response);
       },
       (er) => console.log(er)
     );

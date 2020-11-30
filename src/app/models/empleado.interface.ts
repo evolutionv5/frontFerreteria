@@ -1,4 +1,5 @@
 export interface Empleado {
+  id: number;
   user: string;
   password: string;
   ci: string;
