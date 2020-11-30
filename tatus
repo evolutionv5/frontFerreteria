@@ -1,0 +1,248 @@
+[33mcommit b083e88eb35aa36c9649b0751258d3e4ec82677e[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m)[m
+Merge: f2cb8a1 c6b6915
+Author: henrymon342 <henrymon342@gmail.com>
+Date:   Mon Nov 30 16:19:45 2020 -0400
+
+    Merge branch 'main' of https://github.com/evolutionv5/frontFerreteria into main
+
+[33mcommit f2cb8a1b1da9dce0fb4bd3107ebea8fca7dcef76[m
+Merge: 09d3e5d 40976ab
+Author: henrymon342 <henrymon342@gmail.com>
+Date:   Mon Nov 30 16:19:21 2020 -0400
+
+    arreglo de choque de codigos
+
+[33mcommit c6b6915731deea318bed5e256a4298d0fc4884b1[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: evolutionv5 <jorgeluiscastrov5@gmail.com>
+Date:   Mon Nov 30 16:19:10 2020 -0400
+
+    agregar cliente implementado
+
+[33mcommit 09d3e5dcce0f8fe795da41f09a80c1eff8a50ad0[m
+Author: henrymon342 <henrymon342@gmail.com>
+Date:   Mon Nov 30 16:17:09 2020 -0400
+
+    empleado
+
+[33mcommit eef6907c99232e4d92eae77e265113810d2e6c5b[m
+Author: henrymon342 <henrymon342@gmail.com>
+Date:   Mon Nov 30 15:40:19 2020 -0400
+
+    crud empleado
+
+[33mcommit 40976ab1e58b26fd39c6af72556f5180c43ac3bd[m
+Author: evolutionv5 <jorgeluiscastrov5@gmail.com>
+Date:   Mon Nov 30 15:36:52 2020 -0400
+
+    listado de servicios listo
+
+[33mcommit 404f638ea909ddb97329e7441c83f30485a1b3f1[m
+Author: evolutionv5 <jorgeluiscastrov5@gmail.com>
+Date:   Mon Nov 30 15:01:22 2020 -0400
+
+    servicios de listado en ventas listo
+
+[33mcommit 7a1936de501d4e0b6f4cd84b60ff4bd339633592[m
+Author: henrymon342 <henrymon342@gmail.com>
+Date:   Mon Nov 30 14:44:26 2020 -0400
+
+    pulleo
+
+[33mcommit e4ad7e3b568e28c4cf48e3f06593e4e8ce1dc525[m
+Merge: eb0c5c3 6f201de
+Author: henrymon342 <henrymon342@gmail.com>
+Date:   Mon Nov 30 14:44:10 2020 -0400
+
+    Merge branch 'main' of https://github.com/evolutionv5/frontFerreteria into main
+
+[33mcommit eb0c5c3b17976b633fc9587563c062f7d1af2880[m
+Author: henrymon342 <henrymon342@gmail.com>
+Date:   Mon Nov 30 14:43:27 2020 -0400
+
+    Empleado add y listar
+
+[33mcommit 6f201de1c6c6a56f2ed3cf1d9384f740dd73a80b[m
+Author: evolutionv5 <jorgeluiscastrov5@gmail.com>
+Date:   Mon Nov 30 14:38:02 2020 -0400
+
+    correcion clientes
+
+[33mcommit 86d24d0c389dddef774073acc029e3f3b45dd03b[m
+Author: henrymon342 <henrymon342@gmail.com>
+Date:   Mon Nov 30 14:24:52 2020 -0400
+
+    Empleado add y listar
+
+[33mcommit 8b9fa8a7314ef1a0fc6f79b8f0ba587ceae35c43[m
+Author: evolutionv5 <jorgeluiscastrov5@gmail.com>
+Date:   Mon Nov 30 12:19:47 2020 -0400
+
+    clientes conexion con el back
+
+[33mcommit 66295298a6fbb926669341d2b58d7911ea35dea9[m
+Author: evolutionv5 <jorgeluiscastrov5@gmail.com>
+Date:   Mon Nov 30 11:41:59 2020 -0400
+
+    modify README
+
+[33mcommit 4c452f3ec53ed1edb4293d6ed563b131e0284ec8[m
+Merge: 652241e 0b6aaf2
+Author: evolutionv5 <44754214+evolutionv5@users.noreply.github.com>
+Date:   Mon Nov 30 11:34:41 2020 -0400
+
+    Merge pull request #1 from evolutionv5/master
+    
+    config Readme Master
+
+[33mcommit 0b6aaf2d49539d63a9a17a79dc201315ef754587[m
+Author: evolutionv5 <jorgeluiscastrov5@gmail.com>
+Date:   Mon Nov 30 11:32:54 2020 -0400
+
+    config README
+
+[33mcommit a3804a47396d23bd398b9c88b3cbfdbdb527e26e[m
+Author: evolutionv5 <jorgeluiscastrov5@gmail.com>
+Date:   Mon Nov 30 11:26:34 2020 -0400
+
+    push de prueba modificaion README
+
+[33mcommit 652241e221a58656ae4ac3d6d40b8c05a6aa91f0[m
+Author: evolutionv5 <jorgeluiscastrov5@gmail.com>
+Date:   Sun Nov 29 16:51:29 2020 -0400
+
+    correcion pages css
+
+[33mcommit f5abb8d636e4420d27f232259e39003c73ac3695[m
+Author: evolutionv5 <jorgeluiscastrov5@gmail.com>
+Date:   Sun Nov 29 16:17:54 2020 -0400
+
+    estilos header corregidos
+
+[33mcommit 0359bfb68526658ac594843b7da94b4e8e985b22[m
+Author: evolutionv5 <jorgeluiscastrov5@gmail.com>
+Date:   Sun Nov 29 15:56:30 2020 -0400
+
+    login listo para unir con el back
+
+[33mcommit 23f0972bb0a6639510bb7c6fc70897cb91e9929a[m
+Merge: 2b117f9 d57e72f
+Author: evolutionv5 <jorgeluiscastrov5@gmail.com>
+Date:   Sun Nov 29 15:14:28 2020 -0400
+
+    correciones henry
+
+[33mcommit 2b117f95d7249acc77ba3fd67e11d58f3826f4d2[m
+Author: evolutionv5 <jorgeluiscastrov5@gmail.com>
+Date:   Sun Nov 29 15:11:27 2020 -0400
+
+    logica login
+
+[33mcommit d57e72f290e3c6e00ad8d14bae9697dc16943eb0[m
+Author: henrymon342 <henrymon342@gmail.com>
+Date:   Sun Nov 29 14:59:20 2020 -0400
+
+    variable global, coreccion de errores en bootstrap
+
+[33mcommit e23f7b810554e8d566f919e154818edd9502cdb4[m
+Author: henrymon342 <henrymon342@gmail.com>
+Date:   Sat Nov 28 22:39:21 2020 -0400
+
+    servicios implementados
+
+[33mcommit ec298a888dfe55d0889ed2fb1857db453c9a9269[m
+Author: evolutionv5 <jorgeluiscastrov5@gmail.com>
+Date:   Sat Nov 28 11:11:48 2020 -0400
+
+    diseño pantalla principal mejorado
+
+[33mcommit 83a6e18646e62f7efea045801feb7d002024a17c[m
+Author: evolutionv5 <jorgeluiscastrov5@gmail.com>
+Date:   Sat Nov 28 10:13:13 2020 -0400
+
+    fontawesome icons agregados
+
+[33mcommit ac2548ef5775fd5a475ea731bf967775aad3b402[m
+Author: evolutionv5 <jorgeluiscastrov5@gmail.com>
+Date:   Fri Nov 27 21:29:50 2020 -0400
+
+    bug henry corregido
+
+[33mcommit d07282a80becbf1ad22b0c86e4ea041335833f31[m
+Author: evolutionv5 <jorgeluiscastrov5@gmail.com>
+Date:   Fri Nov 27 21:26:59 2020 -0400
+
+    bug 2
+
+[33mcommit 2dc076aa27e171249eb45cfaf5ff4d47152f3b69[m
+Author: evolutionv5 <jorgeluiscastrov5@gmail.com>
+Date:   Fri Nov 27 21:11:40 2020 -0400
+
+    bug henry ñ corregido
+
+[33mcommit ab86bc514d69887def8d201beb6b91c3b8e9b3d6[m
+Author: henrymon342 <henrymon342@gmail.com>
+Date:   Fri Nov 27 20:54:27 2020 -0400
+
+    servicio empleado
+
+[33mcommit a80b53da753b166e635b9e377085851b93f64d3c[m
+Author: evolutionv5 <jorgeluiscastrov5@gmail.com>
+Date:   Fri Nov 27 18:07:21 2020 -0400
+
+    animaciones y tamaño de pestañas establecido
+
+[33mcommit e816a9bbad76f83afee088e0ddde6ca1b422c39a[m
+Merge: 029da1b ca70b62
+Author: evolutionv5 <jorgeluiscastrov5@gmail.com>
+Date:   Fri Nov 27 17:42:20 2020 -0400
+
+    Merge branch 'main' of https://github.com/evolutionv5/frontFerreteria into main
+
+[33mcommit 029da1b408fc043225481d92ebf19496787f9fcb[m
+Author: evolutionv5 <jorgeluiscastrov5@gmail.com>
+Date:   Fri Nov 27 17:42:03 2020 -0400
+
+    diseño mejorado header
+
+[33mcommit ca70b62bf06f5bb5e01f16d533453cefec2c2948[m
+Author: henrymon342 <henrymon342@gmail.com>
+Date:   Fri Nov 27 17:25:20 2020 -0400
+
+    ventas materiales y empleados
+
+[33mcommit f9e40cb71e24a3972e9914ef2d178c31dc28c029[m
+Author: evolutionv5 <jorgeluiscastrov5@gmail.com>
+Date:   Fri Nov 27 17:16:48 2020 -0400
+
+    pantalla principal terminada
+
+[33mcommit 78dad772ac355f88104674b181d3595093d7244c[m
+Merge: 1090be5 d9c4af1
+Author: evolutionv5 <jorgeluiscastrov5@gmail.com>
+Date:   Fri Nov 27 16:56:28 2020 -0400
+
+    Merge branch 'main' of https://github.com/evolutionv5/frontFerreteria into main
+
+[33mcommit 1090be5d5ac6a5e675b8c6dfd1dc03ede8896d2a[m
+Author: evolutionv5 <jorgeluiscastrov5@gmail.com>
+Date:   Fri Nov 27 16:56:18 2020 -0400
+
+    clientes terminado
+
+[33mcommit d9c4af1335c8849b027052f2726a98369eae5d74[m
+Author: henrymon342 <henrymon342@gmail.com>
+Date:   Fri Nov 27 16:51:16 2020 -0400
+
+    ventas html
+
+[33mcommit 2a73609fc4b7ccc82bad957e989dffd7e95b4c84[m
+Author: evolutionv5 <jorgeluiscastrov5@gmail.com>
+Date:   Fri Nov 27 15:21:47 2020 -0400
+
+    header listo
+
+[33mcommit a7a2a83a6223a4c1ae07bf0df9205a7ff2a1eaa3[m
+Author: evolutionv5 <jorgeluiscastrov5@gmail.com>
+Date:   Fri Nov 27 14:37:19 2020 -0400
+
+    initial commit

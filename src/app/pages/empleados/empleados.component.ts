@@ -93,7 +93,7 @@ export class EmpleadosComponent implements OnInit {
       correo: this.registerForm.value.correo,
       tipo: this.registerForm.value.tipo,
     };
-    this.empleadoService.addEmployee(emp).subscribe(
+    this.serviceempleado.addEmployee(emp).subscribe(
       (response) => {
         console.log(response);
       },
