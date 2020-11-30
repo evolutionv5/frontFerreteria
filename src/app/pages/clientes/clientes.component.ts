@@ -60,10 +60,10 @@ export class ClientesComponent implements OnInit {
     this.cliente = { ci: '', apPaterno: '', apMaterno: '', name: '' };
   }
   agregarCliente() {
-    this.clienteService
-      .addClient(this.cliente)
-      .subscribe((res) => console.log(res));
+    this.clienteService.addClient(this.cliente).subscribe((res) => {
+      this.getClientes();
+      console.log(res);
+    });
     this.showModal = false;
-    this.getClientes();
   }
 }
