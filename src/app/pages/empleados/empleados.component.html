@@ -1,10 +1,15 @@
 <div class="container animate__animated animate__fadeIn main">
   <h1 class="align-items-center">EMPLEADOS</h1>
   <div class="row form-group">
-    <div class="col-5">
+    <div class="col">
+      <button type="button" class="btn btn-info" (click)="show()">
+        Agregar nuevo empleado
+      </button>
+    </div>
+    <div class="col">
       <input
         type="text"
-        placeholder="Nombre del articulo"
+        placeholder="Nombre del empleado"
         class="form-control"
         id="usr"
       />
@@ -30,10 +35,154 @@
         </tr>
       </thead>
       <tr>
-        <button class="btn btn-success" (click)="anadirEmpleado()">
+        <button class="btn btn-success" (click)="addEmpleado()">
           enviar
         </button>
       </tr>
     </table>
+  </div>
+</div>
+
+<div
+  [style.display]="showModal ? 'block' : 'none'"
+  class="modal"
+  id="imagemodal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="myModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <input
+              type="text"
+              formControlName="ci"
+              class="form-control"
+              placeholder="Ci"
+              [ngClass]="{ 'is-invalid': submitted && f.ci.errors }"
+            />
+            <div
+              *ngIf="submitted && f.ci.errors"
+              class="invalid-feedback"
+            >
+              <div *ngIf="f.ci.errors.required">Este campo es requerido</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <input
+              type="text"
+              formControlName="name"
+              class="form-control"
+              placeholder="Nombre"
+              [ngClass]="{ 'is-invalid': submitted && f.name.errors }"
+            />
+            <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+              <div *ngIf="f.name.errors.required">Este campo es requerido</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <input
+              type="text"
+              formControlName="apPaterno"
+              class="form-control"
+              placeholder="Apellido paterno"
+              [ngClass]="{ 'is-invalid': submitted && f.apPaterno.errors }"
+            />
+            <div *ngIf="submitted && f.apPaterno.errors" class="invalid-feedback">
+              <div *ngIf="f.apPaterno.errors.required">Este campo es requerido</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <input
+              type="text"
+              formControlName="apMaterno"
+              placeholder="Apellido materno"
+              class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f.apMaterno.errors }"
+            />
+            <div
+              *ngIf="submitted && f.apMaterno.errors"
+              class="invalid-feedback"
+            >
+              <div *ngIf="f.apMaterno.errors.required">Este campo es requerido</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <input
+              type="text"
+              formControlName="direccion"
+              placeholder="Dirección"
+              class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f.direccion.errors }"
+            />
+            <div
+              *ngIf="submitted && f.direccion.errors"
+              class="invalid-feedback"
+            >
+              <div *ngIf="f.direccion.errors.required">Este campo es requerido</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <input
+              type="text"
+              formControlName="telefono"
+              placeholder="Teléfono"
+              class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f.telefono.errors }"
+            />
+            <div
+              *ngIf="submitted && f.telefono.errors"
+              class="invalid-feedback"
+            >
+              <div *ngIf="f.telefono.errors.required">Este campo es requerido</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <input
+              type="text"
+              formControlName="correo"
+              placeholder="Correo"
+              class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f.correo.errors }"
+            />
+            <div
+              *ngIf="submitted && f.correo.errors"
+              class="invalid-feedback"
+            >
+              <div *ngIf="f.correo.errors.required">Este campo es requerido</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <input
+              type="text"
+              formControlName="tipo"
+              placeholder="Tipo"
+              class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f.tipo.errors }"
+            />
+            <div
+              *ngIf="submitted && f.tipo.errors"
+              class="invalid-feedback"
+            >
+              <div *ngIf="f.tipo.errors.required">Este campo es requerido</div>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-success" type="submit" (click)="addEmpleado()">Guardar</button>
+        <button
+          type="button"
+          class="btn btn-dark"
+          data-dismiss="modal"
+          (click)="hide()"
+        >
+          Close
+        </button>
+      </div>
+    </div>
   </div>
 </div>

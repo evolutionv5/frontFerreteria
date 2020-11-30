@@ -15,7 +15,7 @@ export class MaterialesComponent implements OnInit {
   showModal: boolean;
   registerForm: FormGroup;
   submitted = false;
-  constructor(private formBuilder: FormBuilder) { 
+  constructor(private formBuilder: FormBuilder ) { 
     
   }
   show()
@@ -40,18 +40,24 @@ export class MaterialesComponent implements OnInit {
         ciempleado: ['', [Validators.required]],
         idproveedor: ['', [Validators.required]],
     });
-}
+  }
 
-get f() { return this.registerForm.controls; }
-onSubmit() {
-  this.submitted = true;
-  if (this.registerForm.invalid) {
-      return;
+  get f() { return this.registerForm.controls; }
+  onSubmit() {
+    this.submitted = true;
+    if (this.registerForm.invalid) {
+        return;
+    }
+    if(this.submitted)
+    {
+      this.showModal = false;
+    }
   }
-  if(this.submitted)
-  {
-    this.showModal = false;
+
+
+  addMaterial(){
+    console.log(this.registerForm.value);
+
   }
-}
 
 }

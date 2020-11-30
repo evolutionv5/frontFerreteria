@@ -4,6 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 import { GLOBAL } from './global';
+import { Empleado } from '../models/empleado.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -22,13 +23,13 @@ export class EmpleadoService {
     }),
   };
 
-  addEmployee(employee): Observable<any>{
+  addEmployee(employee): Observable<Empleado>{
     return this.http
       .post<any>(this.url + 'addEmpleado', employee, this.httpOptions)
       .pipe(retry(1), catchError(this.errorHandl));
   }
 
-  getEmployeeId(idemployee): Observable<any>{
+  getEmployeeId(idemployee): Observable<Empleado>{
     return this.http
       .post<any>(this.url + 'findByIdEmpleado', idemployee, this.httpOptions)
       .pipe(retry(1), catchError(this.errorHandl));
@@ -36,7 +37,7 @@ export class EmpleadoService {
 
   getEmployees(){
     return this.http
-      .get<any>(this.url + 'findAllEmpleado')
+      .get<Empleado[]>(this.url + 'findAllEmpleado')
       .pipe(retry(1), catchError(this.errorHandl));
   }
 

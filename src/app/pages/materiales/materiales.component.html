@@ -39,10 +39,7 @@
   </div>
 </div>
 
-<div class="container">
-  <h1 class="text-center">Login with bootstrap popup</h1>
-  <button type="button" class="btn btn-info" (click)="show()">Login</button>
-</div>
+
 <div
   [style.display]="showModal ? 'block' : 'none'"
   class="modal"
@@ -54,9 +51,6 @@
 >
   <div class="modal-dialog">
     <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title" id="myModalLabel">Login</h4>
-      </div>
       <div class="modal-body">
         <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
           <div class="form-group">
@@ -71,14 +65,11 @@
               *ngIf="submitted && f.material.errors"
               class="invalid-feedback"
             >
-              <div *ngIf="f.material.errors.required">Email is required</div>
-              <div *ngIf="f.material.errors.email">
-                Email must be a valid email address
-              </div>
+              <div *ngIf="f.material.errors.required">Este campo es requerido</div>
             </div>
           </div>
           <div class="form-group">
-            <label>Material</label>
+            <label>Pago</label>
             <input
               type="text"
               formControlName="pago"
@@ -86,11 +77,11 @@
               [ngClass]="{ 'is-invalid': submitted && f.pago.errors }"
             />
             <div *ngIf="submitted && f.pago.errors" class="invalid-feedback">
-              <div *ngIf="f.pago.errors.required">Email is required</div>
+              <div *ngIf="f.pago.errors.required">Este campo es requerido</div>
             </div>
           </div>
           <div class="form-group">
-            <label>Material</label>
+            <label>Fecha</label>
             <input
               type="text"
               formControlName="fecha"
@@ -98,7 +89,7 @@
               [ngClass]="{ 'is-invalid': submitted && f.fecha.errors }"
             />
             <div *ngIf="submitted && f.fecha.errors" class="invalid-feedback">
-              <div *ngIf="f.fecha.errors.required">Email is required</div>
+              <div *ngIf="f.fecha.errors.required">Este campo es requerido</div>
             </div>
           </div>
           <div class="form-group">
@@ -113,11 +104,11 @@
               *ngIf="submitted && f.comentario.errors"
               class="invalid-feedback"
             >
-              <div *ngIf="f.comentario.errors.required">Email is required</div>
+              <div *ngIf="f.comentario.errors.required">Este campo es requerido</div>
             </div>
           </div>
           <div class="form-group">
-            <label>ciempleado</label>
+            <label>CI de empleado</label>
             <input
               type="text"
               formControlName="ciempleado"
@@ -128,11 +119,11 @@
               *ngIf="submitted && f.ciempleado.errors"
               class="invalid-feedback"
             >
-              <div *ngIf="f.ciempleado.errors.required">Email is required</div>
+              <div *ngIf="f.ciempleado.errors.required">Este campo es requerido</div>
             </div>
           </div>
           <div class="form-group">
-            <label>idproveedor</label>
+            <label>Id de proveedor</label>
             <input
               type="text"
               formControlName="idproveedor"
@@ -143,15 +134,13 @@
               *ngIf="submitted && f.idproveedor.errors"
               class="invalid-feedback"
             >
-              <div *ngIf="f.idproveedor.errors.required">Email is required</div>
+              <div *ngIf="f.idproveedor.errors.required">Este campo es requerido</div>
             </div>
           </div>
-          <button type="submit" class="btn btn-info" (click)="mostrar()">
-            Submit
-          </button>
         </form>
       </div>
       <div class="modal-footer">
+        <button class="btn btn-success" type="submit" (click)="addMaterial()">Guardar</button>
         <button
           type="button"
           class="btn btn-dark"
@@ -164,44 +153,4 @@
     </div>
   </div>
 </div>
-<!-- <div class="container">
-  <h1 class="text-center">Login with bootstrap popup</h1>
-  <button type="button" class="btn btn-info" (click) = "show()">Login</button>
-   </div>
 
-<div [style.display]="showModal ? 'block' : 'none'" class="modal" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-<div class="modal-dialog">
-  <div class="modal-content">
-    <div class="modal-header">
-      <h4 class="modal-title" id="myModalLabel">Login</h4>
-    </div>
-    <div class="modal-body">
-      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-          <div class="form-group">
-            <input type="text" class="form-control" formControlName="material" placeholder="MATERIAL">
-          </div>
-          <div class="form-group">
-            <input type="text" class="form-control" formControlName="pago" placeholder="PAGO">
-          </div>
-          <div class="form-group">
-            <input type="text" class="form-control" formControlName="fecha" placeholder="FECHA">
-          </div>
-          <div class="form-group">
-            <input type="text" class="form-control" formControlName="comentario" placeholder="COMENTARIO">
-          </div>
-          <div class="form-group">
-            <input type="text" class="form-control" formControlName="ciempleado" placeholder="CI EMPLEADO">
-          </div>
-          <div class="form-group">
-            <input type="text" class="form-control" formControlName="idproveedor" placeholder="ID PROVEEDOR">
-          </div>
-      </form>
-    </div>
-    <div class="modal-footer">
-        <button class="btn btn-success" type="submit" click="insertMaterial()">Insertar</button>
-        <button type="button" class="btn btn-dark" data-dismiss="modal" (click) = "hide()">Close</button>
-
-    </div>
-  </div>
-</div>
-</div> -->
