@@ -27,7 +27,7 @@ export class ClientesComponent implements OnInit {
   show() {
     this.showModal = true; // Show-Hide Modal Check
   }
-  //Bootstrap Modal Close event
+  // Bootstrap Modal Close event
   hide() {
     this.showModal = false;
   }

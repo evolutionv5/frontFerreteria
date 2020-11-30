@@ -1,44 +1,47 @@
-<div class="container animate__animated animate__fadeIn main">
+<div class="main animate__animated animate__fadeIn">
   <h1>MATERIALES</h1>
-  <form>
-    <div class="form-row">
-      <div class="col-7">
-        <button type="button" class="btn btn-info" (click)="show()">
-          Agregar nuevo material
-        </button>
-      </div>
-      <div class="col-4">
-        <input
-          type="text"
-          class="form-control"
-          placeholder="Nombre del Material"
-        />
-      </div>
-      <div class="col-1">
-        <button class="btn btn-info">Buscar</button>
-      </div>
+  <form class="form-inline">
+    <div class="form-group mb-2">
+      <button type="button" class="btn btn-info" (click)="show()">
+        Agregar nuevo material
+      </button>
     </div>
+    <div>
+      <label for="inputPassword2" class="sr-only">C.I. de Cliente</label>
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Nombre del Material"
+      />
+    </div>
+    <button class="btn btn-info">Buscar</button>
   </form>
 
-  <div class="objetos">
-    <table class="table m-2">
-      <thead class="thead-dark">
+  <div class="tabla">
+    <table class="table">
+      <thead class="thead-dark table-head">
         <tr>
-          <th>Material</th>
-          <th>Marca</th>
+          <th>Nombre</th>
           <th>Tipo</th>
           <th>Precio</th>
           <th>Cantidad</th>
           <th>Accion</th>
         </tr>
       </thead>
-      <tr>
-        Contenido!!
+      <tr *ngFor="let producto of productos">
+        <td>{{ producto.nombre }}</td>
+        <td>{{ producto.tipo }}</td>
+        <td>{{ producto.precio }}</td>
+        <td>{{ producto.cantidad }}</td>
+        <td>
+          <button class="btn btn-danger">eliminar</button>
+          <button class="btn btn-warning">compras</button>
+          <button class="btn btn-success">editar</button>
+        </td>
       </tr>
     </table>
   </div>
 </div>
-
 
 <div
   [style.display]="showModal ? 'block' : 'none'"
@@ -65,7 +68,9 @@
               *ngIf="submitted && f.material.errors"
               class="invalid-feedback"
             >
-              <div *ngIf="f.material.errors.required">Este campo es requerido</div>
+              <div *ngIf="f.material.errors.required">
+                Este campo es requerido
+              </div>
             </div>
           </div>
           <div class="form-group">
@@ -104,7 +109,9 @@
               *ngIf="submitted && f.comentario.errors"
               class="invalid-feedback"
             >
-              <div *ngIf="f.comentario.errors.required">Este campo es requerido</div>
+              <div *ngIf="f.comentario.errors.required">
+                Este campo es requerido
+              </div>
             </div>
           </div>
           <div class="form-group">
@@ -119,7 +126,9 @@
               *ngIf="submitted && f.ciempleado.errors"
               class="invalid-feedback"
             >
-              <div *ngIf="f.ciempleado.errors.required">Este campo es requerido</div>
+              <div *ngIf="f.ciempleado.errors.required">
+                Este campo es requerido
+              </div>
             </div>
           </div>
           <div class="form-group">
@@ -134,13 +143,17 @@
               *ngIf="submitted && f.idproveedor.errors"
               class="invalid-feedback"
             >
-              <div *ngIf="f.idproveedor.errors.required">Este campo es requerido</div>
+              <div *ngIf="f.idproveedor.errors.required">
+                Este campo es requerido
+              </div>
             </div>
           </div>
         </form>
       </div>
       <div class="modal-footer">
-        <button class="btn btn-success" type="submit" (click)="addMaterial()">Guardar</button>
+        <button class="btn btn-success" type="submit" (click)="addMaterial()">
+          Guardar
+        </button>
         <button
           type="button"
           class="btn btn-dark"
@@ -153,4 +166,3 @@
     </div>
   </div>
 </div>
-

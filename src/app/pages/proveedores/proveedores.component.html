@@ -1,3 +1,42 @@
-<div class="container animate__animated animate__fadeIn main">
+<div class="main animate__animated animate__fadeIn">
   <h1>PROVEEDORES</h1>
+  <form class="form-inline">
+    <div class="form-group mb-2">
+      <button type="button" class="btn btn-info">
+        Agregar nuevo Proveedor
+      </button>
+    </div>
+    <div>
+      <label for="inputPassword2" class="sr-only">nombre de Proveedor</label>
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Nombre del Proveedor"
+      />
+    </div>
+    <button class="btn btn-info">Buscar</button>
+  </form>
+
+  <div class="tabla">
+    <table class="table">
+      <thead class="thead-dark table-head">
+        <tr>
+          <th>Empresa</th>
+          <th>Direccion</th>
+          <th>Telefono</th>
+          <th>Accion</th>
+        </tr>
+      </thead>
+      <tr *ngFor="let proveedor of proveedores">
+        <td>{{ proveedor.nombreEmpresa }}</td>
+        <td>{{ proveedor.direccion }}</td>
+        <td>{{ proveedor.telefono }}</td>
+        <td>
+          <button class="btn btn-danger">eliminar</button>
+          <button class="btn btn-warning">compras</button>
+          <button class="btn btn-success">editar</button>
+        </td>
+      </tr>
+    </table>
+  </div>
 </div>

@@ -9,7 +9,6 @@ import { EmpleadoService } from '../../services/empleado.service';
   styleUrls: ['./empleados.component.scss'],
 })
 export class EmpleadosComponent implements OnInit {
-
   title = 'angulartoastr';
   showModal: boolean;
   registerForm: FormGroup;
@@ -51,28 +50,29 @@ export class EmpleadosComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.registerForm =  this.formBuilder.group({
-        ci: ['', [Validators.required]],
-        name: ['', [Validators.required]],
-        apPaterno: ['', [Validators.required]],
-        apMaterno: ['', [Validators.required]],
-        direccion: ['', [Validators.required]],
-        telefono: ['', [Validators.required]],
-        correo: ['', [Validators.required]],
-        tipo: ['', [Validators.required]]
+    this.registerForm = this.formBuilder.group({
+      ci: ['', [Validators.required]],
+      name: ['', [Validators.required]],
+      apPaterno: ['', [Validators.required]],
+      apMaterno: ['', [Validators.required]],
+      direccion: ['', [Validators.required]],
+      telefono: ['', [Validators.required]],
+      correo: ['', [Validators.required]],
+      tipo: ['', [Validators.required]],
     });
 
-    this.listarEmpleados();
+    // this.listarEmpleados();
   }
 
-  get f() { return this.registerForm.controls; }
+  get f() {
+    return this.registerForm.controls;
+  }
   onSubmit() {
     this.submitted = true;
     if (this.registerForm.invalid) {
-        return;
+      return;
     }
-    if(this.submitted)
-    {
+    if (this.submitted) {
       this.showModal = false;
     }
   }
@@ -93,7 +93,7 @@ export class EmpleadosComponent implements OnInit {
       correo: this.registerForm.value.correo,
       tipo: this.registerForm.value.tipo,
     };
-    this.serviceempleado.addEmployee(emp).subscribe(
+    this.empleadoService.addEmployee(emp).subscribe(
       (response) => {
         console.log(response);
       },

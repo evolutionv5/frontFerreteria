@@ -6,7 +6,7 @@
         Agregar nuevo empleado
       </button>
     </div>
-    <div class="col">
+    <div>
       <input
         type="text"
         placeholder="Nombre del empleado"
@@ -14,23 +14,22 @@
         id="usr"
       />
     </div>
-    <div class="col-3">
-      <button class="btn btn-info">buscar</button>
-    </div>
-  </div>
 
-  <div class="objetos">
-    <table class="table m-2">
-      <thead class="thead-dark">
+    <button class="btn btn-info">buscar</button>
+  </form>
+
+  <div class="tabla">
+    <table class="table">
+      <thead class="thead-dark thead-dark">
         <tr>
           <th>CI</th>
-          <th>Tipo</th>
           <th>Nombre</th>
           <th>Ap. Paterno</th>
           <th>Ap. Materno</th>
           <th>Dirección</th>
           <th>Teléfono</th>
           <th>Correo</th>
+          <th>Tipo</th>
           <th>Acción</th>
         </tr>
       </thead>
@@ -75,10 +74,7 @@
               placeholder="Ci"
               [ngClass]="{ 'is-invalid': submitted && f.ci.errors }"
             />
-            <div
-              *ngIf="submitted && f.ci.errors"
-              class="invalid-feedback"
-            >
+            <div *ngIf="submitted && f.ci.errors" class="invalid-feedback">
               <div *ngIf="f.ci.errors.required">Este campo es requerido</div>
             </div>
           </div>
@@ -102,8 +98,13 @@
               placeholder="Apellido paterno"
               [ngClass]="{ 'is-invalid': submitted && f.apPaterno.errors }"
             />
-            <div *ngIf="submitted && f.apPaterno.errors" class="invalid-feedback">
-              <div *ngIf="f.apPaterno.errors.required">Este campo es requerido</div>
+            <div
+              *ngIf="submitted && f.apPaterno.errors"
+              class="invalid-feedback"
+            >
+              <div *ngIf="f.apPaterno.errors.required">
+                Este campo es requerido
+              </div>
             </div>
           </div>
           <div class="form-group">
@@ -118,7 +119,9 @@
               *ngIf="submitted && f.apMaterno.errors"
               class="invalid-feedback"
             >
-              <div *ngIf="f.apMaterno.errors.required">Este campo es requerido</div>
+              <div *ngIf="f.apMaterno.errors.required">
+                Este campo es requerido
+              </div>
             </div>
           </div>
           <div class="form-group">
@@ -133,7 +136,9 @@
               *ngIf="submitted && f.direccion.errors"
               class="invalid-feedback"
             >
-              <div *ngIf="f.direccion.errors.required">Este campo es requerido</div>
+              <div *ngIf="f.direccion.errors.required">
+                Este campo es requerido
+              </div>
             </div>
           </div>
           <div class="form-group">
@@ -148,7 +153,9 @@
               *ngIf="submitted && f.telefono.errors"
               class="invalid-feedback"
             >
-              <div *ngIf="f.telefono.errors.required">Este campo es requerido</div>
+              <div *ngIf="f.telefono.errors.required">
+                Este campo es requerido
+              </div>
             </div>
           </div>
           <div class="form-group">
@@ -159,11 +166,10 @@
               class="form-control"
               [ngClass]="{ 'is-invalid': submitted && f.correo.errors }"
             />
-            <div
-              *ngIf="submitted && f.correo.errors"
-              class="invalid-feedback"
-            >
-              <div *ngIf="f.correo.errors.required">Este campo es requerido</div>
+            <div *ngIf="submitted && f.correo.errors" class="invalid-feedback">
+              <div *ngIf="f.correo.errors.required">
+                Este campo es requerido
+              </div>
             </div>
           </div>
           <div class="form-group">
@@ -174,10 +180,7 @@
               class="form-control"
               [ngClass]="{ 'is-invalid': submitted && f.tipo.errors }"
             />
-            <div
-              *ngIf="submitted && f.tipo.errors"
-              class="invalid-feedback"
-            >
+            <div *ngIf="submitted && f.tipo.errors" class="invalid-feedback">
               <div *ngIf="f.tipo.errors.required">Este campo es requerido</div>
             </div>
           </div>
