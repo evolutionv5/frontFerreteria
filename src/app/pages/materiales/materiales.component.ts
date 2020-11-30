@@ -27,10 +27,18 @@ export class MaterialesComponent implements OnInit {
   }
   hide() {
     this.showModal = false;
+    this.resetData();
   }
 
-  mostrar() {
-    console.log(this.registerForm.value);
+  resetData(){
+    this.registerForm = this.formBuilder.group({
+      material: '',
+      pago: '',
+      fecha: '',
+      comentario: '',
+      ciempleado: '',
+      idproveedor: ''
+    }); 
   }
 
   ngOnInit() {
@@ -58,6 +66,9 @@ export class MaterialesComponent implements OnInit {
   }
 
   addMaterial() {
+    this.productoService.addProduct(this.registerForm.value).subscribe((response)=>{
+      console.log(response);
+    });
     console.log(this.registerForm.value);
   }
 }
