@@ -34,11 +34,22 @@
           <th>Acción</th>
         </tr>
       </thead>
-      <tr>
-        <button class="btn btn-success" (click)="addEmpleado()">
-          enviar
-        </button>
-      </tr>
+      <tbody>
+        <tr *ngFor="let empleado of list">
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th>
+            <button class="btn btn-warning">Editar</button>
+            <button class="btn btn-danger">Eliminar</button>
+          </th>
+        </tr>
+      </tbody>
     </table>
   </div>
 </div>

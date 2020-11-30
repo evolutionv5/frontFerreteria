@@ -33,17 +33,26 @@
           <th>Acción</th>
         </tr>
       </thead>
-      <tr>
-        Contenido!!
-      </tr>
+      <tbody>
+        <tr *ngFor="let pedido of Pedidos">
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th></th>
+          <th>
+            <button class="btn btn-warning">Editar</button>
+            <button class="btn btn-danger">Eliminar</button>
+          </th>
+        </tr>
+      </tbody>
     </table>
   </div>
 </div>
 
-<div class="container">
-  <h1 class="text-center">Login with bootstrap popup</h1>
-  <button type="button" class="btn btn-info" (click)="show()">Login</button>
-</div>
 <!-- Creates the bootstrap modal where the image will appear -->
 <div
   [style.display]="showModal ? 'block' : 'none'"

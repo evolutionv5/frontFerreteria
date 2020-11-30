@@ -13,6 +13,8 @@ export class PedidosComponent implements OnInit {
   showModal: boolean;
   registerForm: FormGroup;
   submitted = false;
+  Pedidos;
+
   constructor(private formBuilder: FormBuilder) { }
   show()
   {
