@@ -19,19 +19,19 @@ export class EmpleadosComponent implements OnInit {
   identy;
 
   constructor(private formBuilder: FormBuilder, private serviceempleado: EmpleadoService) {
-    this.Empleados = [
-      {
-        id: 0,
-        ci: "911",
-        name: "henry",
-        apPaterno: "miranda",
-        apMaterno: "choque",
-        direccion: "aca nomas",
-        telefono: "6324",
-        correo: "henry@usuario",
-        tipo: "admin"
-      },
-    ];
+    // this.Empleados = [
+    //   {
+    //     id: 0,
+    //     ci: "911",
+    //     name: "henry",
+    //     apPaterno: "miranda",
+    //     apMaterno: "choque",
+    //     direccion: "aca nomas",
+    //     telefono: "6324",
+    //     correo: "henry@usuario",
+    //     tipo: "admin"
+    //   },
+    // ];
   }
 
   show(it, id)
@@ -44,7 +44,7 @@ export class EmpleadosComponent implements OnInit {
       this.editar = true;
     }
   }
-  
+
   hide()
   {
     this.showModal = false;
