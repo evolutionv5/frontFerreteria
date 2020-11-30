@@ -22,7 +22,7 @@ export class ClienteService {
     }),
   };
 
-  addClient(client): Observable<any> {
+  addClient(client: Cliente): Observable<any> {
     return this.http
       .post<any>(this.url + 'addCliente', client, this.httpOptions)
       .pipe(retry(1), catchError(this.errorHandl));

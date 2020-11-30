@@ -66,18 +66,21 @@
         <h4 class="modal-title" id="myModalLabel">Login</h4>
       </div>
       <div class="modal-body">
-        <!-- <form [formGroup]="registerForm" (ngSubmit)="onSubmit()"> -->
         <div class="form-group">
           <input
             type="text"
+            name="clienteCI"
+            [(ngModel)]="cliente.ci"
             class="form-control"
-            id="formGroupExampleInput"
+            id="clienteCI"
             placeholder="CI"
+            minlength="4"
           />
         </div>
         <div class="form-group">
           <input
             type="text"
+            [(ngModel)]="cliente.name"
             class="form-control"
             id="formGroupExampleInput2"
             placeholder="Nombre"
@@ -86,6 +89,7 @@
         <div class="form-group">
           <input
             type="text"
+            [(ngModel)]="cliente.apPaterno"
             class="form-control"
             id="formGroupExampleInput3"
             placeholder="Apellido Paterno"
@@ -95,6 +99,7 @@
           <input
             type="text"
             class="form-control"
+            [(ngModel)]="cliente.apMaterno"
             id="formGroupExampleInput4"
             placeholder="Apellido Materno"
           />
@@ -102,13 +107,10 @@
         <!-- </form> -->
       </div>
       <div class="modal-footer">
-        <button class="btn btn-success">Guardar</button>
-        <button
-          type="button"
-          class="btn btn-dark"
-          data-dismiss="modal"
-          (click)="hide()"
-        >
+        <button class="btn btn-success" (click)="agregarCliente()">
+          Guardar
+        </button>
+        <button class="btn btn-dark" data-dismiss="modal" (click)="hide()">
           Close
         </button>
       </div>
