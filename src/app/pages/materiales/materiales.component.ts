@@ -41,23 +41,19 @@ export class MaterialesComponent implements OnInit {
 
   resetData() {
     this.registerForm = this.formBuilder.group({
-      material: '',
-      pago: '',
-      fecha: '',
-      comentario: '',
-      ciempleado: '',
-      idproveedor: '',
+      nombre: '',
+      precio: '',
+      tipo: '',
+      cantidad: '',
     });
   }
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
-      material: ['', [Validators.required]],
-      pago: ['', [Validators.required]],
-      fecha: ['', [Validators.required]],
-      comentario: ['', [Validators.required]],
-      ciempleado: ['', [Validators.required]],
-      idproveedor: ['', [Validators.required]],
+      nombre: ['', [Validators.required]],
+      precio: ['', [Validators.required]],
+      tipo: ['', [Validators.required]],
+      cantidad: ['', [Validators.required]],
     });
   }
 

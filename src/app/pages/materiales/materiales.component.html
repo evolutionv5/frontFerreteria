@@ -61,59 +61,58 @@
       <div class="modal-body">
         <div [formGroup]="registerForm" (ngSubmit)="onSubmit()">
           <div class="form-group">
-            <label>Material</label>
+            <label>Nombre</label>
             <input
               type="text"
-              formControlName="material"
+              formControlName="nombre"
               class="form-control"
-              [ngClass]="{ 'is-invalid': submitted && f.material.errors }"
+              [ngClass]="{ 'is-invalid': submitted && f.nombre.errors }"
             />
-            <div
-              *ngIf="submitted && f.material.errors"
-              class="invalid-feedback"
-            >
-              <div *ngIf="f.material.errors.required">
+            <div *ngIf="submitted && f.nombre.errors" class="invalid-feedback">
+              <div *ngIf="f.nombre.errors.required">
                 Este campo es requerido
               </div>
             </div>
           </div>
           <div class="form-group">
-            <label>Pago</label>
+            <label>Tipo</label>
             <input
               type="text"
-              formControlName="pago"
+              formControlName="tipo"
               class="form-control"
-              [ngClass]="{ 'is-invalid': submitted && f.pago.errors }"
+              [ngClass]="{ 'is-invalid': submitted && f.tipo.errors }"
             />
-            <div *ngIf="submitted && f.pago.errors" class="invalid-feedback">
-              <div *ngIf="f.pago.errors.required">Este campo es requerido</div>
+            <div *ngIf="submitted && f.tipo.errors" class="invalid-feedback">
+              <div *ngIf="f.tipo.errors.required">Este campo es requerido</div>
             </div>
           </div>
           <div class="form-group">
-            <label>Fecha</label>
+            <label>Precio</label>
             <input
               type="text"
-              formControlName="fecha"
+              formControlName="precio"
               class="form-control"
-              [ngClass]="{ 'is-invalid': submitted && f.fecha.errors }"
+              [ngClass]="{ 'is-invalid': submitted && f.precio.errors }"
             />
-            <div *ngIf="submitted && f.fecha.errors" class="invalid-feedback">
-              <div *ngIf="f.fecha.errors.required">Este campo es requerido</div>
+            <div *ngIf="submitted && f.precio.errors" class="invalid-feedback">
+              <div *ngIf="f.precio.errors.required">
+                Este campo es requerido
+              </div>
             </div>
           </div>
           <div class="form-group">
-            <label>Comentario</label>
+            <label>Cantidad</label>
             <input
               type="text"
-              formControlName="comentario"
+              formControlName="cantidad"
               class="form-control"
-              [ngClass]="{ 'is-invalid': submitted && f.comentario.errors }"
+              [ngClass]="{ 'is-invalid': submitted && f.cantidad.errors }"
             />
             <div
-              *ngIf="submitted && f.comentario.errors"
+              *ngIf="submitted && f.cantidad.errors"
               class="invalid-feedback"
             >
-              <div *ngIf="f.comentario.errors.required">
+              <div *ngIf="f.cantidad.errors.required">
                 Este campo es requerido
               </div>
             </div>
