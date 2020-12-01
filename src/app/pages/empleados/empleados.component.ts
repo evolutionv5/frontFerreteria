@@ -26,28 +26,28 @@ export class EmpleadosComponent implements OnInit {
     empleadoService.getEmployees().subscribe((res: Empleado[]) => {
       this.empleados = [...res];
     });
-    // this.Empleados = [
-    //   {
-    //     id: 0,
-    //     ci: "911",
-    //     name: "henry",
-    //     apPaterno: "miranda",
-    //     apMaterno: "choque",
-    //     direccion: "aca nomas",
-    //     telefono: "6324",
-    //     correo: "henry@usuario",
-    //     tipo: "admin"
-    //   },
-    // ];
+    this.Empleados = [
+      {
+        id: 0,
+        ci: "911",
+        name: "henry",
+        apPaterno: "miranda",
+        apMaterno: "choque",
+        direccion: "aca nomas",
+        telefono: "6324",
+        correo: "henry@usuario",
+        tipo: "admin"
+      },
+    ];
   }
 
   show(it, id) {
     this.showModal = true;
-    if (it) {
-      this.editar = false;
+    if (!it) {
+      this.editar = true;
     } else {
       this.identy = id;
-      this.editar = true;
+      this.editar = false;
     }
   }
 
@@ -58,7 +58,7 @@ export class EmpleadosComponent implements OnInit {
 
   resetData(){
     this.registerForm = this.formBuilder.group({
-      ci: '|',
+      ci: '',
       name: '',
       apPaterno: '',
       apMaterno: '',
@@ -135,18 +135,9 @@ export class EmpleadosComponent implements OnInit {
   editarEmpleado() {
     console.log('editando...');
     console.log(this.registerForm.value);
-    const response = {
-      lat: -51.3303,
-      lng: 0.3944,
-    };
-
-    let item = {
-      id: 'qwenhee-9763ae-lenfya',
-      address: '14-22 Elder St, London, E1 6BT, UK',
-    };
 
     const newItem = Object.assign({}, this.registerForm.value, {
-      id: this.identy,
+      id: this.identy 
     });
     console.log(newItem);
     this.serviceempleado.updateEmployee(newItem).subscribe(
@@ -158,6 +149,7 @@ export class EmpleadosComponent implements OnInit {
   }
 
   borrarEmpleado(id) {
+    console.log(id);
     this.serviceempleado.deleteEmployee(id).subscribe(
       (response) => {
         console.log(response);
