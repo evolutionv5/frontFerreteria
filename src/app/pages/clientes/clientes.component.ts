@@ -12,6 +12,7 @@ export class ClientesComponent implements OnInit {
   public clientes: Cliente[];
   public cliente: Cliente;
   public clienteParaEditar: Cliente;
+  public editar = false;
   title = 'angulartoastr';
   showModal: boolean;
   registerForm: FormGroup;
@@ -62,14 +63,22 @@ export class ClientesComponent implements OnInit {
     this.clienteParaEditar = { ci: '', apPaterno: '', apMaterno: '', name: '' };
   }
   agregarCliente() {
-    this.clienteService.addClient(this.cliente).subscribe((res) => {
-      this.getClientes();
-      console.log(res);
-    });
+    if (this.editar) {
+      this.clienteService.updateClient(this.cliente).subscribe((res) => {
+        this.getClientes();
+        console.log(res);
+        this.editar = false;
+      });
+    } else {
+      this.clienteService.addClient(this.cliente).subscribe((res) => {
+        this.getClientes();
+        console.log(res);
+      });
+    }
     this.showModal = false;
   }
   eliminarCliente(cliente: Cliente): void {
-    this.clienteService.deleteClient(cliente).subscribe((res) => {
+    this.clienteService.deleteClient(cliente.id).subscribe((res) => {
       this.getClientes();
       console.log(res);
     });
@@ -77,5 +86,6 @@ export class ClientesComponent implements OnInit {
   editarCliente(cliente: Cliente) {
     this.cliente = { ...cliente };
     this.showModal = true;
+    this.editar = true;
   }
 }
