@@ -23,20 +23,18 @@ export class EmpleadosComponent implements OnInit {
     private serviceempleado: EmpleadoService,
     public empleadoService: EmpleadoService
   ) {
-    empleadoService.getEmployees().subscribe((res: Empleado[]) => {
-      this.empleados = [...res];
-    });
+    this.getEmpleados();
     this.Empleados = [
       {
         id: 0,
-        ci: "911",
-        name: "henry",
-        apPaterno: "miranda",
-        apMaterno: "choque",
-        direccion: "aca nomas",
-        telefono: "6324",
-        correo: "henry@usuario",
-        tipo: "admin"
+        ci: '911',
+        name: 'henry',
+        apPaterno: 'miranda',
+        apMaterno: 'choque',
+        direccion: 'aca nomas',
+        telefono: '6324',
+        correo: 'henry@usuario',
+        tipo: 'admin',
       },
     ];
   }
@@ -56,7 +54,7 @@ export class EmpleadosComponent implements OnInit {
     this.resetData();
   }
 
-  resetData(){
+  resetData() {
     this.registerForm = this.formBuilder.group({
       ci: '',
       name: '',
@@ -65,7 +63,7 @@ export class EmpleadosComponent implements OnInit {
       direccion: '',
       telefono: '',
       correo: '',
-      tipo: ''
+      tipo: '',
     });
   }
 
@@ -116,6 +114,7 @@ export class EmpleadosComponent implements OnInit {
       this.serviceempleado.addEmployee(emp).subscribe(
         (response) => {
           console.log(response);
+          this.getEmpleados();
         },
         (er) => console.log(er)
       );
@@ -137,7 +136,7 @@ export class EmpleadosComponent implements OnInit {
     console.log(this.registerForm.value);
 
     const newItem = Object.assign({}, this.registerForm.value, {
-      id: this.identy 
+      id: this.identy,
     });
     console.log(newItem);
     this.serviceempleado.updateEmployee(newItem).subscribe(
@@ -158,4 +157,9 @@ export class EmpleadosComponent implements OnInit {
     );
   }
   eliminarEmpleado(data) {}
+  getEmpleados() {
+    this.empleadoService.getEmployees().subscribe((res: Empleado[]) => {
+      this.empleados = [...res];
+    });
+  }
 }
