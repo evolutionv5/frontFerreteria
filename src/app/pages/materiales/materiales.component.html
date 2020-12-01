@@ -114,40 +114,7 @@
               </div>
             </div>
           </div>
-          <div class="form-group">
-            <label>CI de empleado</label>
-            <input
-              type="text"
-              formControlName="ciempleado"
-              class="form-control"
-              [ngClass]="{ 'is-invalid': submitted && f.ciempleado.errors }"
-            />
-            <div
-              *ngIf="submitted && f.ciempleado.errors"
-              class="invalid-feedback"
-            >
-              <div *ngIf="f.ciempleado.errors.required">
-                Este campo es requerido
-              </div>
-            </div>
-          </div>
-          <div class="form-group">
-            <label>Id de proveedor</label>
-            <input
-              type="text"
-              formControlName="idproveedor"
-              class="form-control"
-              [ngClass]="{ 'is-invalid': submitted && f.idproveedor.errors }"
-            />
-            <div
-              *ngIf="submitted && f.idproveedor.errors"
-              class="invalid-feedback"
-            >
-              <div *ngIf="f.idproveedor.errors.required">
-                Este campo es requerido
-              </div>
-            </div>
-          </div>
+          
         </div>
       </div>
       <div class="modal-footer">
