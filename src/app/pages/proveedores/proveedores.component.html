@@ -2,7 +2,7 @@
   <h1>PROVEEDORES</h1>
   <form class="form-inline">
     <div class="form-group mb-2">
-      <button type="button" class="btn btn-info">
+      <button type="button" class="btn btn-info" (click)="show()">
         Agregar nuevo Proveedor
       </button>
     </div>
@@ -38,5 +38,65 @@
         </td>
       </tr>
     </table>
+  </div>
+</div>
+
+
+<!-- Creates the bootstrap modal where the image will appear -->
+<div
+  [style.display]="showModal ? 'block' : 'none'"
+  class="modal"
+  id="imagemodal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="myModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">Proveedor</h4>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control"
+            formControlName="nombreEmpresa"
+            id="formGroupExampleInput"
+            placeholder="NOMBRE DE EMPRESA"
+          />
+        </div>
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control"
+            formControlName="direccion"
+            id="formGroupExampleInput2"
+            placeholder="DIRECCION"
+          />
+        </div>
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control"
+            formControlName="telefono"
+            id="formGroupExampleInput3"
+            placeholder="TELEFONO"
+          />
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-success" (click)="addProveedor()">Guardar</button>
+        <button
+          type="button"
+          class="btn btn-dark"
+          data-dismiss="modal"
+          (click)="hide()"
+        >
+          Close
+        </button>
+      </div>
+    </div>
   </div>
 </div>

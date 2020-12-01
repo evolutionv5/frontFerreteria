@@ -53,13 +53,14 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title" id="myModalLabel">Login</h4>
+        <h4 class="modal-title" id="myModalLabel">Pedido</h4>
       </div>
       <div class="modal-body">
         <div class="form-group">
           <input
             type="text"
             class="form-control"
+            formControlName="material"
             id="formGroupExampleInput"
             placeholder="MATERIAL"
           />
@@ -68,6 +69,7 @@
           <input
             type="text"
             class="form-control"
+            formControlName="marca"
             id="formGroupExampleInput2"
             placeholder="MARCA"
           />
@@ -76,6 +78,7 @@
           <input
             type="text"
             class="form-control"
+            formControlName="tipo"
             id="formGroupExampleInput3"
             placeholder="TIPO"
           />
@@ -84,6 +87,7 @@
           <input
             type="text"
             class="form-control"
+            formControlName="precio"
             id="formGroupExampleInput4"
             placeholder="PRECIO"
           />
@@ -92,13 +96,14 @@
           <input
             type="text"
             class="form-control"
+            formControlName="cantidad"
             id="formGroupExampleInput5"
             placeholder="CANTIDAD"
           />
         </div>
       </div>
       <div class="modal-footer">
-        <button class="btn btn-success">Guardar</button>
+        <button class="btn btn-success" (click)="addPedido()">Guardar</button>
         <button
           type="button"
           class="btn btn-dark"

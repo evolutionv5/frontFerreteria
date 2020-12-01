@@ -53,6 +53,20 @@ export class EmpleadosComponent implements OnInit {
 
   hide() {
     this.showModal = false;
+    this.resetData();
+  }
+
+  resetData(){
+    this.registerForm = this.formBuilder.group({
+      ci: '|',
+      name: '',
+      apPaterno: '',
+      apMaterno: '',
+      direccion: '',
+      telefono: '',
+      correo: '',
+      tipo: ''
+    });
   }
 
   ngOnInit() {

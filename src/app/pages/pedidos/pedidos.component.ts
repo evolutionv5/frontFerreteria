@@ -29,11 +29,26 @@ export class PedidosComponent implements OnInit {
   //Bootstrap Modal Close event
   hide() {
     this.showModal = false;
+    this.resetData();
   }
+
+  resetData(){
+    this.registerForm = this.formBuilder.group({
+      material: '',
+      marca: '',
+      tipo: '',
+      precio: '',
+      cantidad: ''
+    });
+  }
+
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
+      material: ['', [Validators.required]],
+      marca: ['', [Validators.required]],
+      tipo: ['', [Validators.required]],
+      precio: ['', [Validators.required]],
+      cantidad: ['', [Validators.required]]
     });
   }
   // convenience getter for easy access to form fields
@@ -50,4 +65,11 @@ export class PedidosComponent implements OnInit {
       this.showModal = false;
     }
   }
+
+  addPedido(){
+    console.log(this.registerForm.value);
+    this.pedidoService.addOrder(this.registerForm.value).subscribe((response) => {
+      console.log(response);
+    });
+  } 
 }
