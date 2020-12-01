@@ -35,7 +35,7 @@ export class PedidoService {
       .pipe(retry(1), catchError(this.errorHandl));
   }
 
-  getOrder(){
+  getOrders(){
     return this.http
       .get<any>(this.url + 'findAllPedido')
       .pipe(retry(1), catchError(this.errorHandl));
@@ -46,6 +46,11 @@ export class PedidoService {
       retry(1),
       catchError(this.errorHandl)
     );
+  }
+  deletePedido(idpedido) {
+    return this.http.request('delete', this.url + 'deletePedido', {
+      body: { id: idpedido },
+    });
   }
   
 

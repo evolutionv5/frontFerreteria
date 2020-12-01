@@ -15,11 +15,19 @@ export class PedidosComponent implements OnInit {
   submitted = false;
   Pedidos;
   public pedidos: Pedido[];
+  public pedido: Pedido;
+  public pedidoParaEditar: Pedido;
+  public editar = false;
   constructor(
     private formBuilder: FormBuilder,
     public pedidoService: PedidoService
   ) {
-    pedidoService.getOrder().subscribe((res: Pedido[]) => {
+    pedidoService.getOrders().subscribe((res: Pedido[]) => {
+      this.pedidos = [...res];
+    });
+  }
+  getPedidos() {
+    this.pedidoService.getOrders().subscribe((res: Pedido[]) => {
       this.pedidos = [...res];
     });
   }
@@ -68,4 +76,31 @@ export class PedidosComponent implements OnInit {
       console.log(response);
     });
   } 
+  agregarCliente() {
+    if (this.editar) {
+      this.pedidoService.updateOrder(this.pedido).subscribe((res) => {
+        this.getPedidos();
+        console.log(res);
+        this.editar = false;
+      });
+    } else {
+      this.pedidoService.addOrder(this.pedido).subscribe((res) => {
+        this.getPedidos();
+        console.log(res);
+      });
+    }
+    this.showModal = false;
+  }
+  eliminarPedido(pedido: Pedido): void {
+    // this.clienteService.deleteClient(cliente.id).subscribe((res) => {
+    this.pedidoService.deletePedido(pedido.id).subscribe((res) => {
+      this.getPedidos();
+      console.log(res);
+    });
+  }
+  editarPedido(pedido: Pedido) {
+    this.pedido = { ...pedido };
+    this.showModal = true;
+    this.editar = true;
+  }
 }
