@@ -34,21 +34,17 @@ export class PedidosComponent implements OnInit {
 
   resetData(){
     this.registerForm = this.formBuilder.group({
-      material: '',
-      marca: '',
-      tipo: '',
-      precio: '',
-      cantidad: ''
+    pago: '',
+    fecha: '',
+    comentario: ''
     });
   }
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
-      material: ['', [Validators.required]],
-      marca: ['', [Validators.required]],
-      tipo: ['', [Validators.required]],
-      precio: ['', [Validators.required]],
-      cantidad: ['', [Validators.required]]
+      pago: ['', [Validators.required]],
+      fecha: ['', [Validators.required]],
+      comentario: ['', [Validators.required]]
     });
   }
   // convenience getter for easy access to form fields
