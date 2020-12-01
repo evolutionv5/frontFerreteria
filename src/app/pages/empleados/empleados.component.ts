@@ -115,6 +115,7 @@ export class EmpleadosComponent implements OnInit {
         (response) => {
           console.log(response);
           this.getEmpleados();
+          this.showModal = false;
         },
         (er) => console.log(er)
       );

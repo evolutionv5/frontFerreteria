@@ -49,7 +49,11 @@ export class ClienteService {
   deleteClient(idclient) {
     return this.http.delete<any>(this.url + 'deleteCliente' + { id: idclient });
   }
-
+  deleteClient2(idcliente) {
+    return this.http.request('delete', this.url + 'deleteCliente', {
+      body: { id: idcliente },
+    });
+  }
   // Error handling
   errorHandl(error): any {
     let errorMessage = '';

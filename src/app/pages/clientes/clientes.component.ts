@@ -78,7 +78,8 @@ export class ClientesComponent implements OnInit {
     this.showModal = false;
   }
   eliminarCliente(cliente: Cliente): void {
-    this.clienteService.deleteClient(cliente.id).subscribe((res) => {
+    // this.clienteService.deleteClient(cliente.id).subscribe((res) => {
+    this.clienteService.deleteClient2(cliente.id).subscribe((res) => {
       this.getClientes();
       console.log(res);
     });
