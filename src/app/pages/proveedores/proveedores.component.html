@@ -52,40 +52,53 @@
   aria-labelledby="myModalLabel"
   aria-hidden="true"
 >
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h4 class="modal-title" id="myModalLabel">Proveedor</h4>
-      </div>
-      <div class="modal-body">
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-body">
+      <div [formGroup]="registerForm" (ngSubmit)="onSubmit()">
         <div class="form-group">
           <input
             type="text"
-            class="form-control"
             formControlName="nombreEmpresa"
-            id="formGroupExampleInput"
-            placeholder="NOMBRE DE EMPRESA"
+            class="form-control"
+            placeholder="Nombre de Empresa"
+            [ngClass]="{ 'is-invalid': submitted && f.nombreEmpresa.errors }"
           />
+          <div *ngIf="submitted && f.nombreEmpresa.errors" class="invalid-feedback">
+            <div *ngIf="f.nombreEmpresa.errors.required">Este campo es requerido</div>
+          </div>
         </div>
         <div class="form-group">
           <input
             type="text"
-            class="form-control"
             formControlName="direccion"
-            id="formGroupExampleInput2"
-            placeholder="DIRECCION"
+            class="form-control"
+            placeholder="Dirección"
+            [ngClass]="{ 'is-invalid': submitted && f.direccion.errors }"
           />
+          <div *ngIf="submitted && f.direccion.errors" class="invalid-feedback">
+            <div *ngIf="f.direccion.errors.required">Este campo es requerido</div>
+          </div>
         </div>
         <div class="form-group">
           <input
             type="text"
-            class="form-control"
             formControlName="telefono"
-            id="formGroupExampleInput3"
-            placeholder="TELEFONO"
+            class="form-control"
+            placeholder="Telefono"
+            [ngClass]="{ 'is-invalid': submitted && f.telefono.errors }"
           />
-        </div>
+          <div
+            *ngIf="submitted && f.comentario.errors"
+            class="invalid-feedback"
+          >
+            <div *ngIf="f.telefono.errors.required">
+              Este campo es requerido
+            </div>
+          </div>
+        </div>  
       </div>
+    </div>
       <div class="modal-footer">
         <button class="btn btn-success" (click)="addProveedor()">Guardar</button>
         <button
