@@ -55,7 +55,7 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-body">
-        <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <div [formGroup]="registerForm" (ngSubmit)="onSubmit()">
           <div class="form-group">
             <label>Material</label>
             <input
@@ -148,7 +148,7 @@
               </div>
             </div>
           </div>
-        </form>
+        </div>
       </div>
       <div class="modal-footer">
         <button class="btn btn-success" type="submit" (click)="addMaterial()">
