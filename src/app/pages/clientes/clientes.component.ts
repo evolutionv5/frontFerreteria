@@ -11,7 +11,6 @@ import { Cliente } from '../../models/interfaces';
 export class ClientesComponent implements OnInit {
   public clientes: Cliente[];
   public cliente: Cliente;
-  public clienteParaEditar: Cliente;
   public editar = false;
   title = 'angulartoastr';
   showModal: boolean;
@@ -60,7 +59,6 @@ export class ClientesComponent implements OnInit {
 
   resetData() {
     this.cliente = { ci: '', apPaterno: '', apMaterno: '', name: '' };
-    this.clienteParaEditar = { ci: '', apPaterno: '', apMaterno: '', name: '' };
   }
   agregarCliente() {
     if (this.editar) {

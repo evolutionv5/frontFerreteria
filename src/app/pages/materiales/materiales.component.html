@@ -34,9 +34,13 @@
         <td>{{ producto.precio }}</td>
         <td>{{ producto.cantidad }}</td>
         <td>
-          <button class="btn btn-danger">eliminar</button>
+          <button class="btn btn-danger" (click)="eliminarProducto(producto)">
+            eliminar
+          </button>
           <button class="btn btn-warning">compras</button>
-          <button class="btn btn-success">editar</button>
+          <button class="btn btn-success" (click)="editarProducto(producto)">
+            editar
+          </button>
         </td>
       </tr>
     </table>
@@ -114,7 +118,6 @@
               </div>
             </div>
           </div>
-          
         </div>
       </div>
       <div class="modal-footer">

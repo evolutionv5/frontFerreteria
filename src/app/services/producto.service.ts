@@ -6,10 +6,9 @@ import { retry, catchError } from 'rxjs/operators';
 import { GLOBAL } from './global';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ProductoService {
-
   public url: string;
 
   constructor(private http: HttpClient) {
@@ -23,33 +22,34 @@ export class ProductoService {
     }),
   };
 
-  
-  addProduct(product): Observable<any>{
+  addProduct(product): Observable<any> {
     return this.http
       .post<any>(this.url + 'addProducto', product, this.httpOptions)
       .pipe(retry(1), catchError(this.errorHandl));
   }
 
-  getProductId(idproduct): Observable<any>{
+  getProductId(idproduct): Observable<any> {
     return this.http
       .post<any>(this.url + 'findByIdProducto', idproduct, this.httpOptions)
       .pipe(retry(1), catchError(this.errorHandl));
   }
 
-  getProduct(){
+  getProduct() {
     return this.http
       .get<any>(this.url + 'findAllProducto')
       .pipe(retry(1), catchError(this.errorHandl));
   }
 
-  updateProduct(product){
-    return this.http.put<any>(this.url + 'updateProducto', product, this.httpOptions).pipe(
-      retry(1),
-      catchError(this.errorHandl)
-    );
+  updateProduct(product) {
+    return this.http
+      .put<any>(this.url + 'updateProducto', product, this.httpOptions)
+      .pipe(retry(1), catchError(this.errorHandl));
   }
-
-
+  deleteProduct(idproducto) {
+    return this.http.request('delete', this.url + 'deleteProducto', {
+      body: { id: idproducto },
+    });
+  }
 
   // Error handling
   errorHandl(error): any {
@@ -63,5 +63,5 @@ export class ProductoService {
     }
     console.log(errorMessage);
     return throwError(errorMessage);
-  } 
+  }
 }
