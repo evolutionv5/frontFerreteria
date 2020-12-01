@@ -36,9 +36,13 @@
           <td>{{ cliente.apPaterno }}</td>
           <td>{{ cliente.apMaterno }}</td>
           <td>
-            <button class="btn btn-danger">eliminar</button>
+            <button class="btn btn-danger" (click)="eliminarCliente(cliente)">
+              Eliminar
+            </button>
             <button class="btn btn-warning">compras</button>
-            <button class="btn btn-success">editar</button>
+            <button class="btn btn-success" (click)="editarCliente(cliente)">
+              editar
+            </button>
           </td>
         </tr>
       </tbody>
