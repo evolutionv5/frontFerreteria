@@ -34,7 +34,7 @@ export interface Producto {
   id?: string;
   nombre: string;
   tipo: string;
-  precio: string;
+  precioUnidad: string;
   cantidad: string;
 }
 

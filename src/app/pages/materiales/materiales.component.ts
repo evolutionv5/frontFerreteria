@@ -29,7 +29,7 @@ export class MaterialesComponent implements OnInit {
     });
   }
   resetDataProductos() {
-    this.producto = { nombre: '', tipo: '', precio: '', cantidad: '' };
+    this.producto = { nombre: '', tipo: '', precioUnidad: '', cantidad: '' };
   }
   show() {
     this.showModal = true;
@@ -42,7 +42,7 @@ export class MaterialesComponent implements OnInit {
   resetData() {
     this.registerForm = this.formBuilder.group({
       nombre: '',
-      precio: '',
+      precioUnidad: '',
       tipo: '',
       cantidad: '',
     });
@@ -51,7 +51,7 @@ export class MaterialesComponent implements OnInit {
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
       nombre: ['', [Validators.required]],
-      precio: ['', [Validators.required]],
+      precioUnidad: ['', [Validators.required]],
       tipo: ['', [Validators.required]],
       cantidad: ['', [Validators.required]],
     });

@@ -31,7 +31,7 @@
       <tr *ngFor="let producto of productos">
         <td>{{ producto.nombre }}</td>
         <td>{{ producto.tipo }}</td>
-        <td>{{ producto.precio }}</td>
+        <td>{{ producto.precioUnidad }}</td>
         <td>{{ producto.cantidad }}</td>
         <td>
           <button class="btn btn-danger" (click)="eliminarProducto(producto)">
@@ -90,12 +90,12 @@
             <label>Precio</label>
             <input
               type="text"
-              formControlName="precio"
+              formControlName="precioUnidad"
               class="form-control"
-              [ngClass]="{ 'is-invalid': submitted && f.precio.errors }"
+              [ngClass]="{ 'is-invalid': submitted && f.precioUnidad.errors }"
             />
-            <div *ngIf="submitted && f.precio.errors" class="invalid-feedback">
-              <div *ngIf="f.precio.errors.required">
+            <div *ngIf="submitted && f.precioUnidad.errors" class="invalid-feedback">
+              <div *ngIf="f.precioUnidad.errors.required">
                 Este campo es requerido
               </div>
             </div>
