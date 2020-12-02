@@ -81,6 +81,7 @@ export class MaterialesComponent implements OnInit {
       this.productoService
         .addProduct(this.registerForm.value)
         .subscribe((response) => {
+          this.getProductos();
           console.log(response);
         });
       console.log(this.registerForm.value);

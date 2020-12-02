@@ -34,13 +34,13 @@
         <td>{{ producto.precioUnidad }}</td>
         <td>{{ producto.cantidad }}</td>
         <td>
-          <button class="btn btn-danger" (click)="eliminarProducto(producto)">
-            eliminar
-          </button>
-          <button class="btn btn-warning">compras</button>
           <button class="btn btn-success" (click)="editarProducto(producto)">
             editar
           </button>
+          <button class="btn btn-danger" (click)="eliminarProducto(producto)">
+            eliminar
+          </button>
+          <!-- <button class="btn btn-warning">compras</button> -->
         </td>
       </tr>
     </table>
@@ -65,6 +65,7 @@
             <input
               type="text"
               formControlName="nombre"
+              [(ngModel)]="producto.nombre"
               class="form-control"
               [ngClass]="{ 'is-invalid': submitted && f.nombre.errors }"
             />
@@ -79,6 +80,7 @@
             <input
               type="text"
               formControlName="tipo"
+              [(ngModel)]="producto.tipo"
               class="form-control"
               [ngClass]="{ 'is-invalid': submitted && f.tipo.errors }"
             />
@@ -91,10 +93,14 @@
             <input
               type="text"
               formControlName="precioUnidad"
+              [(ngModel)]="producto.precioUnidad"
               class="form-control"
               [ngClass]="{ 'is-invalid': submitted && f.precioUnidad.errors }"
             />
-            <div *ngIf="submitted && f.precioUnidad.errors" class="invalid-feedback">
+            <div
+              *ngIf="submitted && f.precioUnidad.errors"
+              class="invalid-feedback"
+            >
               <div *ngIf="f.precioUnidad.errors.required">
                 Este campo es requerido
               </div>
@@ -105,6 +111,7 @@
             <input
               type="text"
               formControlName="cantidad"
+              [(ngModel)]="producto.cantidad"
               class="form-control"
               [ngClass]="{ 'is-invalid': submitted && f.cantidad.errors }"
             />

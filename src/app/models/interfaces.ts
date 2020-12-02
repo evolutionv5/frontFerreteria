@@ -25,7 +25,7 @@ export interface Cliente {
 
 export interface Pedido {
   id?: string;
-  pago: string;
+  pago: number;
   fecha: string;
   comentario: string;
 }
@@ -39,12 +39,14 @@ export interface Producto {
 }
 
 export interface Proveedor {
+  id?: string;
   nombreEmpresa: string;
   direccion: string;
   telefono: string;
 }
 
 export interface Venta {
+  id?: string;
   descripcion: string;
   fecha: string;
   pago: string;
