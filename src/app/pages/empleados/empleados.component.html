@@ -69,7 +69,11 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-body">
-        <div [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <div
+          class="formulario"
+          [formGroup]="registerForm"
+          (ngSubmit)="onSubmit()"
+        >
           <div class="form-group">
             <label>C.I.</label>
             <input
