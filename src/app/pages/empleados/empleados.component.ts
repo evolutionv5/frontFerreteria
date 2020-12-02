@@ -24,8 +24,8 @@ export class EmpleadosComponent implements OnInit {
     private serviceempleado: EmpleadoService,
     public empleadoService: EmpleadoService
   ) {
-    this.getEmpleados();
     this.resetDataEmpleado();
+    this.getEmpleados();
   }
 
   getEmpleados() {
@@ -33,19 +33,14 @@ export class EmpleadosComponent implements OnInit {
       this.empleados = [...res];
     });
   }
-  show(it, id) {
+  show() {
     this.showModal = true;
-    if (!it) {
-      this.editar = true;
-    } else {
-      this.identy = id;
-      this.editar = false;
-    }
   }
 
   hide() {
     this.showModal = false;
     this.resetData();
+    this.resetDataEmpleado();
   }
   resetDataEmpleado() {
     this.empleado = {
@@ -102,28 +97,20 @@ export class EmpleadosComponent implements OnInit {
 
   addEmpleado(): void {
     if (this.editar) {
+      console.log('EDITANDO EMPLEADO');
       this.empleadoService.updateEmployee(this.empleado).subscribe((res) => {
         this.getEmpleados();
         console.log(res);
         this.editar = false;
       });
     } else {
+      console.log('AGREGANDO EMPLEADO');
       this.empleadoService.addEmployee(this.empleado).subscribe((res) => {
         this.getEmpleados();
         console.log(res);
       });
     }
     this.showModal = false;
-  }
-
-  listarEmpleados() {
-    this.serviceempleado.getEmployees().subscribe(
-      (response) => {
-        console.log(response);
-        this.Empleados = response;
-      },
-      (er) => console.log(er)
-    );
   }
 
   borrarEmpleado(empleado: Empleado) {
