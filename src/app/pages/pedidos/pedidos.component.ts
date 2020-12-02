@@ -41,7 +41,7 @@ export class PedidosComponent implements OnInit {
   resetDataPedidos() {
     this.pedido = {
       nombreProveedor: '',
-      cantidadPedido: '',
+      cantidadDePedido: '',
       pago: 0,
       fecha: '',
       comentario: '',

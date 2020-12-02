@@ -29,7 +29,7 @@
       <tbody>
         <tr *ngFor="let pedido of pedidos">
           <td>{{ pedido.nombreProveedor }}</td>
-          <td>{{ pedido.cantidadPedido }}</td>
+          <td>{{ pedido.cantidadDePedido }}</td>
           <td>{{ pedido.pago }}</td>
           <td>{{ pedido.fecha }}</td>
           <td>{{ pedido.comentario }}</td>
@@ -85,16 +85,18 @@
             <label>Cantidad de Pedido</label>
             <input
               type="text"
-              formControlName="cantidadPedido"
-              [(ngModel)]="pedido.cantidadPedido"
+              formControlName="cantidadDePedido"
+              [(ngModel)]="pedido.cantidadDePedido"
               class="form-control"
-              [ngClass]="{ 'is-invalid': submitted && f.cantidadPedido.errors }"
+              [ngClass]="{
+                'is-invalid': submitted && f.cantidadDePedido.errors
+              }"
             />
             <div
-              *ngIf="submitted && f.cantidadPedido.errors"
+              *ngIf="submitted && f.cantidadDePedido.errors"
               class="invalid-feedback"
             >
-              <div *ngIf="f.cantidadPedido.errors.required">
+              <div *ngIf="f.cantidadDePedido.errors.required">
                 Este campo es requerido
               </div>
             </div>
