@@ -23,7 +23,7 @@ export class EmpleadoService {
     }),
   };
 
-  addEmployee(employee): Observable<Empleado> {
+  addEmployee(employee: Empleado): Observable<any> {
     return this.http
       .post<any>(this.url + 'addEmpleado', employee, this.httpOptions)
       .pipe(retry(1), catchError(this.errorHandl));
