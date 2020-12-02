@@ -108,12 +108,10 @@ export class EmpleadosComponent implements OnInit {
         this.editar = false;
       });
     } else {
-      this.empleadoService
-        .addEmployee(this.registerForm.value)
-        .subscribe((res) => {
-          this.getEmpleados();
-          console.log(res);
-        });
+      this.empleadoService.addEmployee(this.empleado).subscribe((res) => {
+        this.getEmpleados();
+        console.log(res);
+      });
     }
     this.showModal = false;
   }
