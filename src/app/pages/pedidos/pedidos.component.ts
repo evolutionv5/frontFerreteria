@@ -16,7 +16,6 @@ export class PedidosComponent implements OnInit {
   Pedidos;
   public pedidos: Pedido[];
   public pedido: Pedido;
-  public pedidoParaEditar: Pedido;
   public editar = false;
   constructor(
     private formBuilder: FormBuilder,
@@ -39,12 +38,21 @@ export class PedidosComponent implements OnInit {
     this.showModal = false;
     this.resetData();
   }
+  resetDataPedidos() {
+    this.pedido = {
+      nombreProveedor: '',
+      cantidadPedido: '',
+      pago: 0,
+      fecha: '',
+      comentario: '',
+    };
+  }
 
-  resetData(){
+  resetData() {
     this.registerForm = this.formBuilder.group({
-    pago: '',
-    fecha: '',
-    comentario: ''
+      pago: '',
+      fecha: '',
+      comentario: '',
     });
   }
 
@@ -52,7 +60,7 @@ export class PedidosComponent implements OnInit {
     this.registerForm = this.formBuilder.group({
       pago: ['', [Validators.required]],
       fecha: ['', [Validators.required]],
-      comentario: ['', [Validators.required]]
+      comentario: ['', [Validators.required]],
     });
   }
   // convenience getter for easy access to form fields
@@ -70,13 +78,13 @@ export class PedidosComponent implements OnInit {
     }
   }
 
-  addPedido(){
-    console.log(this.registerForm.value);
-    this.pedidoService.addOrder(this.registerForm.value).subscribe((response) => {
-      console.log(response);
-    });
-  } 
-  agregarCliente() {
+  // addPedido(){
+  //   console.log(this.registerForm.value);
+  //   this.pedidoService.addOrder(this.registerForm.value).subscribe((response) => {
+  //     console.log(response);
+  //   });
+  // }
+  addPedido() {
     if (this.editar) {
       this.pedidoService.updateOrder(this.pedido).subscribe((res) => {
         this.getPedidos();

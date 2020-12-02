@@ -25,6 +25,8 @@ export interface Cliente {
 
 export interface Pedido {
   id?: string;
+  nombreProveedor: string;
+  cantidadPedido: string;
   pago: number;
   fecha: string;
   comentario: string;
