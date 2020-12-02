@@ -4,7 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 import { GLOBAL } from './global';
-import { Empleado } from '../models/empleado.interface';
+import { Empleado } from '../models/interfaces';
 
 @Injectable({
   providedIn: 'root',
@@ -23,33 +23,34 @@ export class EmpleadoService {
     }),
   };
 
-  addEmployee(employee): Observable<Empleado>{
+  addEmployee(employee): Observable<Empleado> {
     return this.http
       .post<any>(this.url + 'addEmpleado', employee, this.httpOptions)
       .pipe(retry(1), catchError(this.errorHandl));
   }
 
-  getEmployeeId(idemployee): Observable<Empleado>{
+  getEmployeeId(idemployee): Observable<Empleado> {
     return this.http
       .post<any>(this.url + 'findByIdEmpleado', idemployee, this.httpOptions)
       .pipe(retry(1), catchError(this.errorHandl));
   }
 
-  getEmployees(){
+  getEmployees() {
     return this.http
       .get<Empleado[]>(this.url + 'findAllEmpleado')
       .pipe(retry(1), catchError(this.errorHandl));
   }
 
-  updateEmployee(employee){
-    return this.http.put<any>(this.url + 'updateEmpleado', employee, this.httpOptions).pipe(
-      retry(1),
-      catchError(this.errorHandl)
-    );
+  updateEmployee(employee) {
+    return this.http
+      .put<any>(this.url + 'updateEmpleado', employee, this.httpOptions)
+      .pipe(retry(1), catchError(this.errorHandl));
   }
 
-  deleteEmployee(idemployee){
-    return this.http.delete<any>(this.url + 'deleteEmpleado'+ {id: idemployee});
+  deleteEmployee(idemployee) {
+    return this.http.request('delete', this.url + 'deleteEmpleado', {
+      body: { id: idemployee },
+    });
   }
 
   // Error handling
