@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Empleado } from '../../models/empleado.interface';
 import { EmpleadoService } from '../../services/empleado.service';
+import { Empleado } from '../../models/interfaces';
 
 @Component({
   selector: 'app-empleados',
@@ -14,9 +14,10 @@ export class EmpleadosComponent implements OnInit {
   registerForm: FormGroup;
   submitted = false;
   Empleados;
-  editar = false;
   identy;
   public empleados: Empleado[];
+  public empleado: Empleado;
+  public editar = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -24,21 +25,14 @@ export class EmpleadosComponent implements OnInit {
     public empleadoService: EmpleadoService
   ) {
     this.getEmpleados();
-    this.Empleados = [
-      {
-        id: 0,
-        ci: '911',
-        name: 'henry',
-        apPaterno: 'miranda',
-        apMaterno: 'choque',
-        direccion: 'aca nomas',
-        telefono: '6324',
-        correo: 'henry@usuario',
-        tipo: 'admin',
-      },
-    ];
+    this.resetDataEmpleado();
   }
 
+  getEmpleados() {
+    this.empleadoService.getEmployees().subscribe((res: Empleado[]) => {
+      this.empleados = [...res];
+    });
+  }
   show(it, id) {
     this.showModal = true;
     if (!it) {
@@ -53,7 +47,18 @@ export class EmpleadosComponent implements OnInit {
     this.showModal = false;
     this.resetData();
   }
-
+  resetDataEmpleado() {
+    this.empleado = {
+      ci: '',
+      name: '',
+      apPaterno: '',
+      apMaterno: '',
+      direccion: '',
+      telefono: '',
+      correo: '',
+      tipo: '',
+    };
+  }
   resetData() {
     this.registerForm = this.formBuilder.group({
       ci: '',
@@ -96,30 +101,19 @@ export class EmpleadosComponent implements OnInit {
   }
 
   addEmpleado(): void {
-    if (!this.editar) {
-      this.editarEmpleado();
+    if (this.editar) {
+      this.empleadoService.updateEmployee(this.empleado).subscribe((res) => {
+        this.getEmpleados();
+        console.log(res);
+        this.editar = false;
+      });
     } else {
-      console.log('añadiendo...');
-      console.log(this.registerForm.value);
-      const emp = {
-        ci: this.registerForm.value.ci,
-        name: this.registerForm.value.name,
-        apPaterno: this.registerForm.value.apPaterno,
-        apMaterno: this.registerForm.value.apMaterno,
-        direccion: this.registerForm.value.direccion,
-        telefono: this.registerForm.value.telefono,
-        correo: this.registerForm.value.correo,
-        tipo: this.registerForm.value.tipo,
-      };
-      this.serviceempleado.addEmployee(emp).subscribe(
-        (response) => {
-          console.log(response);
-          this.getEmpleados();
-          this.showModal = false;
-        },
-        (er) => console.log(er)
-      );
+      this.empleadoService.addEmployee(this.empleado).subscribe((res) => {
+        this.getEmpleados();
+        console.log(res);
+      });
     }
+    this.showModal = false;
   }
 
   listarEmpleados() {
@@ -132,35 +126,15 @@ export class EmpleadosComponent implements OnInit {
     );
   }
 
-  editarEmpleado() {
-    console.log('editando...');
-    console.log(this.registerForm.value);
-
-    const newItem = Object.assign({}, this.registerForm.value, {
-      id: this.identy,
+  borrarEmpleado(empleado: Empleado) {
+    this.empleadoService.deleteEmployee(empleado.id).subscribe((res) => {
+      this.getEmpleados();
+      console.log(res);
     });
-    console.log(newItem);
-    this.serviceempleado.updateEmployee(newItem).subscribe(
-      (response) => {
-        console.log(response);
-      },
-      (er) => console.log(er)
-    );
   }
-
-  borrarEmpleado(id) {
-    console.log(id);
-    this.serviceempleado.deleteEmployee(id).subscribe(
-      (response) => {
-        console.log(response);
-      },
-      (er) => console.log(er)
-    );
-  }
-  eliminarEmpleado(data) {}
-  getEmpleados() {
-    this.empleadoService.getEmployees().subscribe((res: Empleado[]) => {
-      this.empleados = [...res];
-    });
+  editarEmpleado(empleado: Empleado) {
+    this.empleado = { ...empleado };
+    this.showModal = true;
+    this.editar = true;
   }
 }
