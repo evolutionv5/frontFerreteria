@@ -9,31 +9,52 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./proveedores.component.scss'],
 })
 export class ProveedoresComponent implements OnInit {
-
   title = 'angulartoastr';
   showModal: boolean;
   registerForm: FormGroup;
   submitted = false;
-
+  public editar = false;
   public proveedores: Proveedor[];
-  constructor(private formBuilder: FormBuilder, public proveedorService: ProveedorService) {
+  public proveedor: Proveedor;
+  constructor(
+    private formBuilder: FormBuilder,
+    public proveedorService: ProveedorService
+  ) {
+    this.getProveedor();
+    this.resetDataProveedor();
+  }
+
+  getProveedor() {
     this.proveedorService.getProvider().subscribe((res: Proveedor[]) => {
       this.proveedores = [...res];
     });
   }
-
+  resetDataProveedor() {
+    this.proveedor = { nombreEmpresa: '', direccion: '', telefono: '' };
+  }
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
       nombreEmpresa: ['', [Validators.required]],
       direccion: ['', [Validators.required]],
-      telefono: ['', [Validators.required]]
+      telefono: ['', [Validators.required]],
     });
   }
 
-  addProveedor(){
-    this.proveedorService.addProvider(this.registerForm.value).subscribe((response)=>{
-      console.log(response);
-    });
+  addProveedor() {
+    if (this.editar) {
+      this.proveedorService.updateProvider(this.proveedor).subscribe((res) => {
+        this.getProveedor();
+        console.log(res);
+        this.editar = false;
+      });
+    } else {
+      this.proveedorService
+        .addProvider(this.registerForm.value)
+        .subscribe((response) => {
+          console.log(response);
+          this.getProveedor();
+        });
+    }
   }
 
   get f() {
@@ -49,22 +70,31 @@ export class ProveedoresComponent implements OnInit {
     }
   }
 
-  resestData(){
+  resestData() {
     this.registerForm = this.formBuilder.group({
       nombreEmpresa: '',
       direccion: '',
-      telefono: ''
+      telefono: '',
     });
   }
 
-  show()
-  {
-    this.showModal = true; 
+  show() {
+    this.showModal = true;
   }
 
-  hide()
-  {
+  hide() {
     this.showModal = false;
     this.resestData();
+  }
+  eliminarProveedor(proveedor: Proveedor) {
+    this.proveedorService.deleteProveedor(proveedor.id).subscribe((res) => {
+      this.getProveedor();
+      console.log(res);
+    });
+  }
+  editarProveedor(proveedor: Proveedor) {
+    this.proveedor = { ...proveedor };
+    this.showModal = true;
+    this.editar = true;
   }
 }
