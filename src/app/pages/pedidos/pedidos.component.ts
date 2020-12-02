@@ -21,13 +21,13 @@ export class PedidosComponent implements OnInit {
     private formBuilder: FormBuilder,
     public pedidoService: PedidoService
   ) {
-    pedidoService.getOrders().subscribe((res: Pedido[]) => {
-      this.pedidos = [...res];
-    });
+    this.getPedidos();
+    this.resetDataPedidos();
   }
   getPedidos() {
     this.pedidoService.getOrders().subscribe((res: Pedido[]) => {
       this.pedidos = [...res];
+      console.log('[PEDIDOS]', res);
     });
   }
   show() {
