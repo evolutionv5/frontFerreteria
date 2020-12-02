@@ -13,9 +13,9 @@ export class ProveedoresComponent implements OnInit {
   showModal: boolean;
   registerForm: FormGroup;
   submitted = false;
-  public editar = false;
   public proveedores: Proveedor[];
   public proveedor: Proveedor;
+  public editar = false;
   constructor(
     private formBuilder: FormBuilder,
     public proveedorService: ProveedorService
@@ -51,10 +51,11 @@ export class ProveedoresComponent implements OnInit {
       this.proveedorService
         .addProvider(this.registerForm.value)
         .subscribe((response) => {
-          console.log(response);
           this.getProveedor();
+          console.log(response);
         });
     }
+    this.showModal = false;
   }
 
   get f() {
