@@ -50,6 +50,8 @@ export class PedidosComponent implements OnInit {
 
   resetData() {
     this.registerForm = this.formBuilder.group({
+      nombreProveedor: '',
+      cantidadDePedido: '',
       pago: '',
       fecha: '',
       comentario: '',
@@ -58,6 +60,8 @@ export class PedidosComponent implements OnInit {
 
   ngOnInit() {
     this.registerForm = this.formBuilder.group({
+      nombreProveedor: ['', [Validators.required]],
+      cantidadDePedido: ['', [Validators.required]],
       pago: ['', [Validators.required]],
       fecha: ['', [Validators.required]],
       comentario: ['', [Validators.required]],
