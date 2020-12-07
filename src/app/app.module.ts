@@ -29,6 +29,7 @@ import { VentasPipe } from './pipes/ventas.pipe';
 //Forms
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ProductoPipe } from './pipes/producto.pipe';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     PedidosPipe,
     ProveedorPipe,
     VentasPipe,
+    ProductoPipe,
   ],
   imports: [
     BrowserModule,
