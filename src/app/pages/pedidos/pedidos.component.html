@@ -7,7 +7,7 @@
       </button>
     </div>
     <div class="col-4">
-      <input type="text" class="form-control" placeholder="Nombre del Pedido" />
+        <input type="text" class="form-control" placeholder="Nombre del Pedido" [formControl]="search" />
     </div>
     <div class="col-1">
       <button class="btn btn-info">Buscar</button>
@@ -27,7 +27,8 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let pedido of pedidos">
+        <!-- | pedidos-pipe: filtroValue -->
+        <tr *ngFor="let pedido of pedidos | pedidospipe: filtroValue">
           <td>{{ pedido.nombreProveedor }}</td>
           <td>{{ pedido.cantidadDePedido }}</td>
           <td>{{ pedido.pago }}</td>

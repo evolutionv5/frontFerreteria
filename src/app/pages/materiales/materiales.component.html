@@ -12,6 +12,7 @@
         type="text"
         class="form-control"
         placeholder="Nombre del Material"
+        [formControl]="search"
       />
     </div>
     <button class="btn btn-info">Buscar</button>
@@ -28,7 +29,8 @@
           <th>Accion</th>
         </tr>
       </thead>
-      <tr *ngFor="let producto of productos">
+      <!-- | materiales-pipe: filtroValue -->
+      <tr *ngFor="let producto of productos | materialespipe: filtroValue">
         <td>{{ producto.nombre }}</td>
         <td>{{ producto.tipo }}</td>
         <td>{{ producto.precioUnidad }}</td>

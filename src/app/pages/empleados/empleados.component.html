@@ -12,6 +12,7 @@
         placeholder="Nombre del empleado"
         class="form-control"
         id="usr"
+        [formControl]="search"
       />
     </div>
 
@@ -34,7 +35,8 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let empleado of empleados">
+        <!-- | empleado-pipe: filtroValue -->
+        <tr *ngFor="let empleado of empleados | empleadopipe: filtroValue">
           <td>{{ empleado.ci }}</td>
           <td>{{ empleado.tipo }}</td>
           <td>{{ empleado.name }}</td>

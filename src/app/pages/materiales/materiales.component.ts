@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { ProductoService } from '../../services/producto.service';
 import { Producto } from '../../models/interfaces';
+import { debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'app-materiales',
@@ -9,10 +10,27 @@ import { Producto } from '../../models/interfaces';
   styleUrls: ['./materiales.component.scss'],
 })
 export class MaterialesComponent implements OnInit {
+
+  filtroValue = '';
+  search = new FormControl('');
+
   title = 'angulartoastr';
   showModal: boolean;
   registerForm: FormGroup;
   submitted = false;
+
+  // productos: Producto[] = [
+  //   {id: 'hola',
+  //     nombre: 'hola',
+  //     tipo: 'hola',
+  //     precioUnidad: 'hola',
+  //     cantidad: 'hola'},
+  //     {id: 'chau',
+  //     nombre: 'chau',
+  //     tipo: 'chau',
+  //     precioUnidad: 'chau',
+  //     cantidad: 'chau'},
+  // ]
   public productos: Producto[];
   public producto: Producto;
   public editar = false;
@@ -49,6 +67,11 @@ export class MaterialesComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.search.valueChanges.pipe(debounceTime(300)).subscribe((value) => {
+      this.filtroValue = value;
+      console.log(value);
+    });
+
     this.registerForm = this.formBuilder.group({
       nombre: ['', [Validators.required]],
       precioUnidad: ['', [Validators.required]],

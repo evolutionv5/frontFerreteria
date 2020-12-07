@@ -2,9 +2,19 @@
   <h1>VENTAS</h1>
   <form class="form-inline">
     <div class="form-group">
+<<<<<<< HEAD
       <button type="button" class="btn btn-info" (click)="show()">
         Agregar nueva Venta
       </button>
+=======
+      <input
+        type="text"
+        placeholder="Nombre del articulo"
+        class="form-control"
+        id="usr"
+        [formControl]="search"
+      />
+>>>>>>> 38ad548a439acfef5ef81edb147a729cdd7b6ed3
     </div>
     <div class="col-4">
       <input type="text" class="form-control" placeholder="Nombre de la venta" />
@@ -17,6 +27,7 @@
 
       </div> -->
 
+<<<<<<< HEAD
       <div class="tabla">
         <table class="table">
           <thead class="thead-dark table-head">
@@ -142,6 +153,60 @@
         Close
       </button>
     </div>
+=======
+  <div class="tabla">
+    <table class="table">
+      <thead class="thead-dark table-head">
+        <tr>
+          <th>Nombre</th>
+          <th>Tipo</th>
+          <th>Precio</th>
+          <th>Cantidad</th>
+          <th>Accion</th>
+        </tr>
+      </thead>
+      <!-- | ventas-pipe: filtroValue -->
+      <tr *ngFor="let producto of productos | ventaspipe: filtroValue">
+        <td>{{ producto.nombre }}</td>
+        <td>{{ producto.tipo }}</td>
+        <td>{{ producto.precio }}</td>
+        <td>{{ producto.cantidad }}</td>
+        <td>
+          <button class="btn btn-danger">eliminar</button>
+          <button class="btn btn-warning">compras</button>
+          <button class="btn btn-success">editar</button>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <h3 class="text-center">Materiales a vender</h3>
+
+  <div class="tabla">
+    <table class="table">
+      <thead class="thead-dark table-head">
+        <tr>
+          <th>Materiales (Descripción)</th>
+          <th>Fecha</th>
+          <th>Pago</th>
+          <th>Acción</th>
+        </tr>
+      </thead>
+      <tr *ngFor="let venta of ventas | ventaspipe: filtroValue">
+        <td>{{ venta.descripcion }}</td>
+        <td>{{ venta.fecha }}</td>
+        <td>{{ venta.pago }}</td>
+        <td>
+          <button class="btn btn-danger">eliminar</button>
+          <button class="btn btn-warning">compras</button>
+          <button class="btn btn-success">editar</button>
+        </td>
+      </tr>
+    </table>
+  </div>
+  <div class="text-center">
+    <button class="guardar btn btn-info">Guardar</button>
+>>>>>>> 38ad548a439acfef5ef81edb147a729cdd7b6ed3
   </div>
 </div>
 </div>

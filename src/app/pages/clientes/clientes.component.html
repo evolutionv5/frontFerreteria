@@ -9,10 +9,11 @@
     <div class="form-group mx-sm-3 mb-2">
       <label for="inputPassword2" class="sr-only">C.I. de Cliente</label>
       <input
-        type="password"
+        type="text"
         class="form-control"
         id="inputPassword2"
         placeholder="nombre de cliente"
+        [formControl]="search"
       />
     </div>
     <button type="submit" class="btn btn-info mb-2">Buscar</button>
@@ -30,7 +31,8 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let cliente of clientes">
+        <!-- | cliente-pipe: filtroValue -->
+        <tr *ngFor="let cliente of clientes | clientepipe: filtroValue">
           <td>{{ cliente.ci }}</td>
           <td>{{ cliente.name }}</td>
           <td>{{ cliente.apPaterno }}</td>

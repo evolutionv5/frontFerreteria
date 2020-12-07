@@ -1,5 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+<<<<<<< HEAD
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+=======
+import { FormControl } from '@angular/forms';
+import { debounceTime } from 'rxjs/internal/operators/debounceTime';
+import { Producto, Venta } from '../../models/interfaces';
+import { ProductoService } from '../../services/producto.service';
+>>>>>>> 38ad548a439acfef5ef81edb147a729cdd7b6ed3
 import { VentaService } from '../../services/venta.service';
 import { Venta } from '../../models/interfaces';
 
@@ -9,6 +16,7 @@ import { Venta } from '../../models/interfaces';
   styleUrls: ['./ventas.component.scss'],
 })
 export class VentasComponent implements OnInit {
+<<<<<<< HEAD
   title = 'angulartoastr';
   showModal: boolean;
   registerForm: FormGroup;
@@ -17,6 +25,48 @@ export class VentasComponent implements OnInit {
   public ventas: Venta[];
   public venta: Venta;
   public editar = false;
+=======
+  public productos: Producto[];
+  
+  // variables para la busqueda
+  filtroValue = '';
+  search = new FormControl('');
+  
+  public ventas: Venta[];
+
+
+  // ventas:Venta[] = [{
+  //   id: '0',
+  //   descripcion: 'asdf',
+  //   fecha: 'sdf',
+  //   pago: 'sdfsdf'
+  // },{
+  //   id: '1',
+  //   descripcion: 'asdf',
+  //   fecha: 'sdf',
+  //   pago: 'sdfsdf'
+  // },{
+  //   id: '2',
+  //   descripcion: 'asdf',
+  //   fecha: 'sdf',
+  //   pago: 'sdfsdf'
+  // },{
+  //   id: '3',
+  //   descripcion: 'asdf',
+  //   fecha: 'sdf',
+  //   pago: 'sdfsdf'
+  // },{
+  //   id: '4',
+  //   descripcion: 'asdf',
+  //   fecha: 'sdf',
+  //   pago: 'sdfsdf'
+  // },{
+  //   id: '5',
+  //   descripcion: 'asdf',
+  //   fecha: 'sdf',
+  //   pago: 'sdfsdf'
+  // }];
+>>>>>>> 38ad548a439acfef5ef81edb147a729cdd7b6ed3
   constructor(
     private formBuilder: FormBuilder,
     public ventaService: VentaService
@@ -64,6 +114,7 @@ export class VentasComponent implements OnInit {
     }
   }
 
+<<<<<<< HEAD
   get f() {
     return this.registerForm.controls;
   }
@@ -102,4 +153,13 @@ export class VentasComponent implements OnInit {
     this.showModal = true;
     this.editar = true;
   }
+=======
+  ngOnInit(): void {
+    this.search.valueChanges.pipe(debounceTime(300)).subscribe((value) => {
+      this.filtroValue = value;
+      console.log(value);
+    });
+  }
+
+>>>>>>> 38ad548a439acfef5ef81edb147a729cdd7b6ed3
 }

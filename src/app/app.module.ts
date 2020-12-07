@@ -18,6 +18,14 @@ import { PedidosComponent } from './pages/pedidos/pedidos.component';
 import { EmpleadosComponent } from './pages/empleados/empleados.component';
 import { HomeComponent } from './pages/home/home.component';
 
+//Pipes
+import { ClientePipe } from './pipes/cliente.pipe';
+import { EmpleadoPipe } from './pipes/empleado.pipe';
+import { MaterialesPipe } from './pipes/materiales.pipe';
+import { PedidosPipe } from './pipes/pedidos.pipe';
+import { ProveedorPipe } from './pipes/proveedor.pipe';
+import { VentasPipe } from './pipes/ventas.pipe';
+
 //Forms
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -34,6 +42,12 @@ import { ReactiveFormsModule } from '@angular/forms';
     PedidosComponent,
     EmpleadosComponent,
     HomeComponent,
+    ClientePipe,
+    EmpleadoPipe,
+    MaterialesPipe,
+    PedidosPipe,
+    ProveedorPipe,
+    VentasPipe,
   ],
   imports: [
     BrowserModule,
