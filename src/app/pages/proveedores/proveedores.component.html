@@ -12,6 +12,7 @@
         type="text"
         class="form-control"
         placeholder="Nombre del Proveedor"
+        [formControl]="search"
       />
     </div>
     <button class="btn btn-info">Buscar</button>
@@ -27,7 +28,8 @@
           <th>Accion</th>
         </tr>
       </thead>
-      <tr *ngFor="let proveedor of proveedores">
+      <!-- | proveedor-pipe: filtroValue -->
+      <tr *ngFor="let proveedor of proveedores | proveedorpipe: filtroValue">
         <td>{{ proveedor.nombreEmpresa }}</td>
         <td>{{ proveedor.direccion }}</td>
         <td>{{ proveedor.telefono }}</td>

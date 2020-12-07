@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { ClienteService } from '../../services/cliente.service';
 import { Cliente } from '../../models/interfaces';
+import { debounceTime } from 'rxjs/operators';
+
 
 @Component({
   selector: 'app-clientes',
@@ -9,6 +11,55 @@ import { Cliente } from '../../models/interfaces';
   styleUrls: ['./clientes.component.scss'],
 })
 export class ClientesComponent implements OnInit {
+
+  filtroValue = '';
+  search = new FormControl('');
+
+  // clientes: Cliente[] = [
+  //   {
+  //     id: '0',
+  //     ci: '234',
+  //     name: 'henry',
+  //     apPaterno: 'miranda',
+  //     apMaterno: 'choque'
+  //   },
+  //   {
+  //     id: '2',
+  //     ci: '234',
+  //     name: 'daniel',
+  //     apPaterno: 'miranda',
+  //     apMaterno: 'choque'
+  //   },
+  //   {
+  //     id: '3',
+  //     ci: '234',
+  //     name: 'rene',
+  //     apPaterno: 'miranda',
+  //     apMaterno: 'choque'
+  //   },
+  //   {
+  //     id: '4',
+  //     ci: '234',
+  //     name: 'juan',
+  //     apPaterno: 'miranda',
+  //     apMaterno: 'choque'
+  //   },
+  //   {
+  //     id: '5',
+  //     ci: '234',
+  //     name: 'henry',
+  //     apPaterno: 'miranda',
+  //     apMaterno: 'choque'
+  //   },
+  //   {
+  //     id: '6',
+  //     ci: '234',
+  //     name: 'henry',
+  //     apPaterno: 'miranda',
+  //     apMaterno: 'choque'
+  //   },
+  // ];
+
   public clientes: Cliente[];
   public cliente: Cliente;
   public editar = false;
@@ -18,7 +69,7 @@ export class ClientesComponent implements OnInit {
   submitted = false;
   constructor(
     private formBuilder: FormBuilder,
-    public clienteService: ClienteService
+    public clienteService: ClienteService,
   ) {
     this.resetData();
     this.getClientes();
@@ -37,6 +88,11 @@ export class ClientesComponent implements OnInit {
     this.resetData();
   }
   ngOnInit() {
+    this.search.valueChanges.pipe(debounceTime(300)).subscribe((value) => {
+        this.filtroValue = value;
+        console.log(value);
+    });
+
     this.registerForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],

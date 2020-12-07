@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ProveedorService } from '../../services/proveedor.service';
 import { Proveedor } from '../../models/interfaces';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
+import { debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'app-proveedores',
@@ -9,10 +10,15 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./proveedores.component.scss'],
 })
 export class ProveedoresComponent implements OnInit {
+  filtroValue = '';
+  search = new FormControl('');
+
   title = 'angulartoastr';
   showModal: boolean;
   registerForm: FormGroup;
   submitted = false;
+
+  
   public proveedores: Proveedor[];
   public proveedor: Proveedor;
   public editar = false;
@@ -33,6 +39,11 @@ export class ProveedoresComponent implements OnInit {
     this.proveedor = { nombreEmpresa: '', direccion: '', telefono: '' };
   }
   ngOnInit() {
+    this.search.valueChanges.pipe(debounceTime(300)).subscribe((value) => {
+      this.filtroValue = value;
+      console.log(value);
+    });
+
     this.registerForm = this.formBuilder.group({
       nombreEmpresa: ['', [Validators.required]],
       direccion: ['', [Validators.required]],

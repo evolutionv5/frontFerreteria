@@ -7,6 +7,7 @@
         placeholder="Nombre del articulo"
         class="form-control"
         id="usr"
+        [formControl]="search"
       />
     </div>
     <div class="col-3">
@@ -28,7 +29,8 @@
           <th>Accion</th>
         </tr>
       </thead>
-      <tr *ngFor="let producto of productos">
+      <!-- | ventas-pipe: filtroValue -->
+      <tr *ngFor="let producto of productos | ventaspipe: filtroValue">
         <td>{{ producto.nombre }}</td>
         <td>{{ producto.tipo }}</td>
         <td>{{ producto.precio }}</td>
@@ -54,7 +56,7 @@
           <th>Acción</th>
         </tr>
       </thead>
-      <tr *ngFor="let venta of ventas">
+      <tr *ngFor="let venta of ventas | ventaspipe: filtroValue">
         <td>{{ venta.descripcion }}</td>
         <td>{{ venta.fecha }}</td>
         <td>{{ venta.pago }}</td>

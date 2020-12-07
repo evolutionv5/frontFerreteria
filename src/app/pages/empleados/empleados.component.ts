@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { EmpleadoService } from '../../services/empleado.service';
 import { Empleado } from '../../models/interfaces';
+import { debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'app-empleados',
@@ -9,12 +10,38 @@ import { Empleado } from '../../models/interfaces';
   styleUrls: ['./empleados.component.scss'],
 })
 export class EmpleadosComponent implements OnInit {
+
+  filtroValue = '';
+  search = new FormControl('');
+
+
   title = 'angulartoastr';
   showModal: boolean;
   registerForm: FormGroup;
   submitted = false;
   Empleados;
   identy;
+
+  // empleados: Empleado[] = [
+  //   { id: '0',
+  //     ci: 'cuals',
+  //     name: 'cuals',
+  //     apPaterno: 'cuals',
+  //     apMaterno: 'cuals',
+  //     direccion: 'cuals',
+  //     telefono: 'cuals',
+  //     correo: 'cuals',
+  //     tipo: 'cuals'},
+  //     { id: '1',
+  //     ci: 'otro',
+  //     name: 'otro',
+  //     apPaterno: 'otro',
+  //     apMaterno: 'otro',
+  //     direccion: 'otro',
+  //     telefono: 'otro',
+  //     correo: 'otro',
+  //     tipo: 'otro'}
+  // ];
   public empleados: Empleado[];
   public empleado: Empleado;
   public editar = false;
@@ -68,6 +95,11 @@ export class EmpleadosComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.search.valueChanges.pipe(debounceTime(300)).subscribe((value) => {
+      this.filtroValue = value;
+      console.log(value);
+    });
+
     this.registerForm = this.formBuilder.group({
       ci: ['', [Validators.required]],
       name: ['', [Validators.required]],

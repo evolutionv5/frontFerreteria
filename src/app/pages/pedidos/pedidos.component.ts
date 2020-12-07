@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { PedidoService } from '../../services/pedido.service';
 import { Pedido } from '../../models/interfaces';
+import { debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'app-pedidos',
@@ -9,11 +10,16 @@ import { Pedido } from '../../models/interfaces';
   styleUrls: ['./pedidos.component.scss'],
 })
 export class PedidosComponent implements OnInit {
+
+  filtroValue = '';
+  search = new FormControl('');
+
   title = 'angulartoastr';
   showModal: boolean;
   registerForm: FormGroup;
   submitted = false;
   Pedidos;
+
   public pedidos: Pedido[];
   public pedido: Pedido;
   public editar = false;
@@ -59,6 +65,11 @@ export class PedidosComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.search.valueChanges.pipe(debounceTime(300)).subscribe((value) => {
+      this.filtroValue = value;
+      console.log(value);
+    });
+
     this.registerForm = this.formBuilder.group({
       nombreProveedor: ['', [Validators.required]],
       cantidadDePedido: ['', [Validators.required]],
