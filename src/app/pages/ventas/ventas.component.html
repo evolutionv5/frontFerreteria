@@ -1,72 +1,147 @@
 <div class="main animate__animated animate__fadeIn">
   <h1>VENTAS</h1>
-  <form class="form-inline col-3">
+  <form class="form-inline">
     <div class="form-group">
-      <input
-        type="text"
-        placeholder="Nombre del articulo"
-        class="form-control"
-        id="usr"
-      />
+      <button type="button" class="btn btn-info" (click)="show()">
+        Agregar nueva Venta
+      </button>
     </div>
-    <div class="col-3">
-      <button class="btn btn-info">buscar</button>
+    <div class="col-4">
+      <input type="text" class="form-control" placeholder="Nombre de la venta" />
+    </div>
+    <div class="col-1">
+      <button class="btn btn-info">Buscar</button>
     </div>
   </form>
   <!-- <div class="form-group">
 
       </div> -->
 
-  <div class="tabla">
-    <table class="table">
-      <thead class="thead-dark table-head">
-        <tr>
-          <th>Nombre</th>
-          <th>Tipo</th>
-          <th>Precio</th>
-          <th>Cantidad</th>
-          <th>Accion</th>
-        </tr>
-      </thead>
-      <tr *ngFor="let producto of productos">
-        <td>{{ producto.nombre }}</td>
-        <td>{{ producto.tipo }}</td>
-        <td>{{ producto.precio }}</td>
-        <td>{{ producto.cantidad }}</td>
-        <td>
-          <button class="btn btn-danger">eliminar</button>
-          <button class="btn btn-warning">compras</button>
-          <button class="btn btn-success">editar</button>
-        </td>
-      </tr>
-    </table>
-  </div>
+      <div class="tabla">
+        <table class="table">
+          <thead class="thead-dark table-head">
+            <tr>
+              <th>CI Cliente</th>
+              <th>Fecha</th>
+              <th>Monto A Cancelar</th>
+              <th>Descripcion</th>
+              <th>Acción</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let venta of ventas">
+              <td>{{ venta.ci }}</td>
+              <td>{{ venta.fecha }}</td>
+              <td>{{ venta.montoCancelar }}</td>
+              <td>{{ venta.descripcion }}</td>
+              <td>
+                <button class="btn btn-success" (click)="editarVenta(venta)">
+                  editar
+                </button>
+                <button class="btn btn-danger" (click)="eliminarVenta(venta)">
+                  eliminar
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+</div>
 
-  <h3 class="text-center">Materiales a vender</h3>
-
-  <div class="tabla">
-    <table class="table">
-      <thead class="thead-dark table-head">
-        <tr>
-          <th>Materiales (Descripción)</th>
-          <th>Fecha</th>
-          <th>Pago</th>
-          <th>Acción</th>
-        </tr>
-      </thead>
-      <tr *ngFor="let venta of ventas">
-        <td>{{ venta.descripcion }}</td>
-        <td>{{ venta.fecha }}</td>
-        <td>{{ venta.pago }}</td>
-        <td>
-          <button class="btn btn-danger">eliminar</button>
-          <button class="btn btn-warning">compras</button>
-          <button class="btn btn-success">editar</button>
-        </td>
-      </tr>
-    </table>
+<div
+  [style.display]="showModal ? 'block' : 'none'"
+  class="modal"
+  id="imagemodal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="myModalLabel"
+  aria-hidden="true"
+>
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-body">
+      <div [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label>CI del Cliente</label>
+          <input
+            type="text"
+            formControlName="ci"
+            [(ngModel)]="venta.ci"
+            class="form-control"
+            [ngClass]="{
+              'is-invalid': submitted && f.ci.errors
+            }"
+          />
+          <div
+            *ngIf="submitted && f.ci.errors"
+            class="invalid-feedback"
+          >
+            <div *ngIf="f.ci.errors.required">
+              Este campo es requerido
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Fecha</label>
+          <input
+            type="text"
+            formControlName="fecha"
+            [(ngModel)]="venta.fecha"
+            class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f.fecha.errors }"
+          />
+          <div *ngIf="submitted && f.fecha.errors" class="invalid-feedback">
+            <div *ngIf="f.fecha.errors.required">Este campo es requerido</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Monto a Cancelar</label>
+          <input
+            type="text"
+            formControlName="montoCancelar"
+            [(ngModel)]="venta.montoCancelar"
+            class="form-control"
+            [ngClass]="{
+              'is-invalid': submitted && f.montoCancelar.errors
+            }"
+          />
+          <div
+            *ngIf="submitted && f.montoCancelarerrors"
+            class="invalid-feedback"
+          >
+            <div *ngIf="f.montoCancelar.errors.required">
+              Este campo es requerido
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Descripcion</label>
+          <input
+            type="text"
+            formControlName="descripcion"
+            [(ngModel)]="venta.descripcion"
+            class="form-control"
+            [ngClass]="{ 'is-invalid': submitted && f.descripcion.errors }"
+          />
+          <div *ngIf="submitted && f.descripcion.errors" class="invalid-feedback">
+            <div *ngIf="f.descripcion.errors.required">Este campo es requerido</div>
+          </div>
+        </div>
+        
+        
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-success" (click)="addVenta()">Guardar</button>
+      <button
+        type="button"
+        class="btn btn-dark"
+        data-dismiss="modal"
+        (click)="hide()"
+      >
+        Close
+      </button>
+    </div>
   </div>
-  <div class="text-center">
-    <button class="guardar btn btn-info">Guardar</button>
-  </div>
+</div>
 </div>

@@ -49,7 +49,8 @@ export interface Proveedor {
 
 export interface Venta {
   id?: string;
-  descripcion: string;
+  ci: string;
   fecha: string;
-  pago: string;
+  montoCancelar: string;
+  descripcion: string;
 }

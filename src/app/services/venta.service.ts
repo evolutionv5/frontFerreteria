@@ -4,7 +4,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { retry, catchError } from 'rxjs/operators';
 import { GLOBAL } from './global';
-import { Venta } from '../models/interfaces';
+//import { Venta } from '../models/interfaces';
 
 @Injectable({
   providedIn: 'root',
@@ -35,9 +35,14 @@ export class VentaService {
       .pipe(retry(1), catchError(this.errorHandl));
   }
 
-  getSale() {
+  /*getSale() {
     return this.http
       .get<Venta>(this.url + 'findAllVenta')
+      .pipe(retry(1), catchError(this.errorHandl));
+  }*/
+  getSale(){
+    return this.http
+      .get<any>(this.url + 'findAllVenta')
       .pipe(retry(1), catchError(this.errorHandl));
   }
 
@@ -47,6 +52,12 @@ export class VentaService {
       .pipe(retry(1), catchError(this.errorHandl));
   }
 
+  deleteVenta(idventa) {
+    return this.http.request('delete', this.url + 'deleteVenta', {
+      body: { id: idventa },
+    });
+  }
+  
   // Error handling
   errorHandl(error): any {
     let errorMessage = '';
